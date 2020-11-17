@@ -4,14 +4,15 @@ Page({
      * 页面的初始数据
      */
     data: {
-        navList: ["全部", "待付款", "待发货", "待收货", "待评价", "退款"],
+        navList: ["全部", "待付款", "待发货", "待收货", "待评价", "退款中"],
         currentIndex: 0,
         userId: null,
         allOrders: [],
-        toBePaidList: [], //待付款
-        toBeDeliveredList: [], //待发货
-        toBeReceivedList: [], // 待收货
+        toBePaidList: [], //待付款1
+        toBeDeliveredList: [], //待发货2
+        toBeReceivedList: [], // 待收货3
         toBeEvaluatedList: [], // 待评价
+        refunding: [], // 退款中4
     },
 
     /**
@@ -48,6 +49,7 @@ Page({
                 let toBeDeliveredList = []
                 let toBeReceivedList = []
                 let toBeEvaluatedList = []
+                let refunding = []
                 // 分类各种状态的订单
                 res.data.forEach((i) => {
                     if (i.status == 1) {
@@ -58,21 +60,25 @@ Page({
                         toBeReceivedList.push(i)
                     } else if (i.status == 6) {
                         toBeEvaluatedList.push(i)
+                    } else if (i.status == 4) {
+                        refunding.push(i)
                     }
                 })
 
-                // 数组倒置
+                // 数组倒置，使最新的订单前置
                 allOrders = allOrders.reverse()
                 toBePaidList = toBePaidList.reverse()
                 toBeDeliveredList = toBeDeliveredList.reverse()
                 toBeReceivedList = toBeReceivedList.reverse()
                 toBeEvaluatedList = toBeEvaluatedList.reverse()
+                refunding = refunding.reverse()
                 this.setData({
                     allOrders,
                     toBePaidList,
                     toBeDeliveredList,
                     toBeReceivedList,
                     toBeEvaluatedList,
+                    refunding
                 })
             } else {
                 wx.showToast({
@@ -107,4 +113,7 @@ Page({
             currentIndex: e.detail.current,
         })
     },
+    delOrder(e){
+        console.log(e.currentTarget.dataset.orderid)
+    }
 })

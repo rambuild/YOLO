@@ -8,6 +8,7 @@ Page({
      */
     data: {
         userAddress: [], //用户的地址信息
+        action: null
     },
 
     /**
@@ -26,6 +27,13 @@ Page({
             })
         })
     },
+    onLoad(options) {
+        if (options.action) {
+            this.setData({
+                action: options.action
+            })
+        }
+    },
     // 页面跳转
     addressGo(e) {
         let options = e.currentTarget.dataset.item
@@ -42,7 +50,6 @@ Page({
     },
     // 设为默认地址
     radioChange(e) {
-        // console.log(e)
         wx.http({
             url: "setAddress",
             data: {
@@ -52,13 +59,56 @@ Page({
             },
         }).then((res) => {
             if (res.code == 200) {
-                wx.showToast({
-                    title: "设置成功",
-                })
+                if (this.data.action == "changeAddr") {
+                    wx.navigateBack({
+                        delta: 1
+                    })
+                } else {
+                    wx.showToast({
+                        title: "设置成功",
+                    })
+                }
             } else {
                 wx.showToast({
                     title: "设置失败",
-                    icon:"none"
+                    icon: "none"
+                })
+            }
+        })
+    },
+    // 点击地址栏修改默认地址
+    selAddr(e) {
+        let { index, addr } = e.currentTarget.dataset
+        wx.http({
+            url: "setAddress",
+            data: {
+                id: addr.id,
+                userId: App.globalData.user.id,
+                type: 2,
+            },
+        }).then((res) => {
+            if (res.code == 200) {
+                if (this.data.action == "changeAddr") {
+                    wx.navigateBack({
+                        delta: 1
+                    })
+                } else {
+                    let userAddress = JSON.parse(JSON.stringify(this.data.userAddress))
+                    userAddress.forEach(i => {
+                        i.type = 1
+                    })
+                    userAddress[index].type = 2
+                    this.setData({
+                        userAddress
+                    })
+                    wx.showToast({
+                        title: "设置成功",
+                    })
+                }
+            } else {
+                wx.showToast({
+                    title: "设置失败",
+                    icon: "none"
                 })
             }
         })

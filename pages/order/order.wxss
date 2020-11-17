@@ -6,13 +6,16 @@
 	width: 750rpx;
 	height: 80rpx;
 	background-color: #000;
-	padding: 0 0 0 40rpx;
 	overflow: hidden;
 	display: flex;
 	flex-direction: row;
 	white-space: nowrap;
 }
-
+.navigation .wrapper{
+	width: 90%;
+	height: 100%;
+	margin: 0 auto;
+}
 .navItem {
 	display: inline-block;
 	width: 100rpx;
@@ -37,12 +40,15 @@
 .dpj,
 .tk {
 	width: 100%;
-	height: 100%;
+	/* height: 100%; */
 	/* text-align: center;
   line-height: 500rpx;
   font-size: 80rpx; */
+  padding-bottom: 50rpx;
 }
-
+.dfk{
+	padding-bottom: 130rpx;
+}
 ::-webkit-scrollbar {
 	width: 0;
 	height: 0;

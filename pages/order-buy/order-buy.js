@@ -41,15 +41,30 @@ Page({
         })
     },
     confirmPay() {
-        wx.http({
-            url: "insertOrder",
-            data: {
-                userId: this.data.userId,
-                addressId: this.data.userDefaultAddr.id,
-                price: this.data.totalPrice,
-            },
-        }).then(res=>{
-          console.log(res)
-        })
+        wx.showModal({
+            title: '提示',
+            content: '确认支付？',
+            success: function (res) {
+                if (res.confirm) {
+                    wx.http({
+                        url: "insertOrder",
+                        data: {
+                            userId: this.data.userId,
+                            addressId: this.data.userDefaultAddr.id,
+                            price: this.data.totalPrice,
+                        },
+                    }).then(res => {
+                        console.log(res)
+                    })
+                } else if (res.cancel) {
+
+                }
+            }
+        });
     },
+    selAddr() {
+        wx.navigateTo({
+            url: '/pages/myAddress/myAddress?action=changeAddr'
+        });
+    }
 })

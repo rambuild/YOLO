@@ -1,5 +1,5 @@
 <view class="orderbuy">
-    <view class="order-address">
+    <view class="order-address" bindtap='selAddr'>
         <image class="address-icon" src="/static/icon/address.png" ></image>
         <view>
             <view class="address-inf">

@@ -1,17 +1,19 @@
 <view class="order">
 		<!-- 头部 -->
 		<view id="navigation" class="navigation">
-				<scroll-view scroll-x="true">
-						<block wx:for="{{navList}}" wx:key="index">
-								<view class="navItem {{index==currentIndex?'navActive':''}}" bindtap="navGo" data-index="{{index}}">
-										{{item}}
-								</view>
-						</block>
-				</scroll-view>
+				<view class="wrapper">
+						<scroll-view scroll-x="true" class="scrollView">
+								<block wx:for="{{navList}}" wx:key="index">
+										<view class="navItem {{index==currentIndex?'navActive':''}}" bindtap="navGo" data-index="{{index}}">
+												{{item}}
+										</view>
+								</block>
+						</scroll-view>
+				</view>
 		</view>
 		<!-- 内容 -->
 		<view class="content" style="padding:{{currentIndex==1?'0rpx,0rpx':''}}">
-				<swiper easing-function="linear" style="height:{{orderHeight?orderHeight+'px':''}}" current="{{currentIndex}}" duration="500" bindchange="switchTab">
+				<swiper easing-function="linear" style="height:{{orderHeight?orderHeight+'px':''}}" current="{{currentIndex}}" duration="300" bindchange="switchTab">
 						<block wx:for="{{6}}" wx:key="index">
 								<swiper-item>
 										<scroll-view scroll-y="true" style="height:{{orderHeight?orderHeight+'px':''}}">
@@ -43,8 +45,10 @@
 																		<view style="font-size:32rpx;opacity:1;color:#000">需付款￥{{item1.price}}</view>
 																</view>
 																<view class="btn">
-																		<view>删除订单</view>
-																		<view>退款中</view>
+																		<view bindtap='delOrder' data-orderid="{{item1.id}}">删除订单</view>
+																		<view>
+																				{{item1.status == 1?"待支付":item1.status == 2?"待发货":item1.status ==3?"待收货":item1.status ==4?"退款中":item1.status==5?"退款完成":item1.status ==6?"待评价":""}}
+																		</view>
 																</view>
 														</view>
 												</view>
@@ -121,30 +125,30 @@
 																		</view>
 																</view>
 																<block wx:for="{{item1.orderInfoList}}" wx:key="id" wx:for-item="item2" wx:for-index="index2">
-                                  <view class="line" style="margin:20rpx 0"></view>
-                                  <view class="code">
-                                      <view>{{item2.orderId}}</view>
-                                      <view>{{item2.createTime}}</view>
-                                  </view>
-                                  <view class="line" style="margin:20rpx 0"></view>
-                                  <view class="item-top">
-                                      <view class="top-img">
-                                          <image src="{{item2.img1}}"></image>
-                                      </view>
-                                      <view class="top-show">
-                                          <view>{{item2.goodsName}}</view>
-                                          <view>品类：{{item2.category}}</view>
-                                          <view>
-                                              <text>颜色：{{item2.color}}</text>
-                                              <text style="margin-left:32rpx">尺码：{{item2.size}}</text>
-                                          </view>
-                                          <view>
-                                              <view style="font-size:32rpx">￥{{item2.price}}</view>
-                                              <view>x{{item2.num}}</view>
-                                          </view>
-                                      </view>
-                                  </view>
-                                </block>
+																		<view class="line" style="margin:20rpx 0"></view>
+																		<view class="code">
+																				<view>{{item2.orderId}}</view>
+																				<view>{{item2.createTime}}</view>
+																		</view>
+																		<view class="line" style="margin:20rpx 0"></view>
+																		<view class="item-top">
+																				<view class="top-img">
+																						<image src="{{item2.img1}}"></image>
+																				</view>
+																				<view class="top-show">
+																						<view>{{item2.goodsName}}</view>
+																						<view>品类：{{item2.category}}</view>
+																						<view>
+																								<text>颜色：{{item2.color}}</text>
+																								<text style="margin-left:32rpx">尺码：{{item2.size}}</text>
+																						</view>
+																						<view>
+																								<view style="font-size:32rpx">￥{{item2.price}}</view>
+																								<view>x{{item2.num}}</view>
+																						</view>
+																				</view>
+																		</view>
+																</block>
 																<view class="line"></view>
 																<view class="money">
 																		<view>订单总价￥{{item1.price}}</view>
@@ -222,32 +226,32 @@
 												</view>
 												<!-- 退款 -->
 												<view wx:if="{{currentIndex==5}}" class="tk">
-														<view class="item">
-																<view class="item-top">
+														<view class="item" wx:for="{{refunding}}" wx:key="id" wx:for-item="item1" wx:for-index="index1">
+																<view class="item-top" wx:for="{{item1.orderInfoList}}" wx:key="id" wx:for-item="item2" wx:for-index="index2">
 																		<view class="top-img">
-																				<image src="https://img.alicdn.com/imgextra/i3/1379440038/O1CN01mkkydZ1C9Rg5bA18W_!!0-saturn_solar.jpg_220x220.jpg_.webp"></image>
+																				<image src="{{item2.img1}}"></image>
 																		</view>
 																		<view class="top-show">
-																				<view>DIY莱卡棉短袖T恤</view>
-																				<view>品类：落肩T恤</view>
+																				<view>{{item2.goodsName}}</view>
+																				<view>品类：{{item2.category}}</view>
 																				<view>
-																						<text>颜色：白色</text>
-																						<text style="margin-left:32rpx">尺码：2XL</text>
+																						<text>颜色：{{item2.color}}</text>
+																						<text style="margin-left:32rpx">尺码：{{item2.size}}</text>
 																				</view>
 																				<view>
-																						<view style="font-size:32rpx">￥69</view>
-																						<view>x1</view>
+																						<view style="font-size:32rpx">￥{{item2.price}}</view>
+																						<view>x{{item2.num}}</view>
 																				</view>
 																		</view>
 																</view>
 																<view class="line"></view>
 																<view class="money">
-																		<view>订单总价￥69</view>
+																		<view>订单总价￥{{item1.price}}</view>
 																		<view>优惠￥0</view>
 																		<view style="font-size:32rpx;opacity:1;color:#000">需付款￥{{item1.price}}</view>
 																</view>
 																<view class="btn">
-																		<view>删除订单</view>
+																		<view bindtap='delOrder' data-orderid="{{item1.id}}">删除订单</view>
 																		<view>退款中</view>
 																</view>
 														</view>

@@ -11,7 +11,7 @@
 						<image src="../../static/icon/地址.png" />
 					</view>
 				</view>
-				<view class="content">
+				<view class="content" bindtap='selAddr' data-addr='{{item}}' data-index="{{index}}">
 					<view class="basic">
 						<view>{{userAddress[index].nick}}</view>
 						<view>{{userAddress[index].phone}}</view>
