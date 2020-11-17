@@ -44,7 +44,7 @@ Page({
         wx.showModal({
             title: '提示',
             content: '确认支付？',
-            success: function (res) {
+            success:(res)=> {
                 if (res.confirm) {
                     wx.http({
                         url: "insertOrder",
