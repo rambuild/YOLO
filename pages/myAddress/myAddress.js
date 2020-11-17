@@ -88,6 +88,7 @@ Page({
             },
         }).then((res) => {
             if (res.code == 200) {
+                // 如果是从订单提交页过来更改地址的就回退过去
                 if (this.data.action == "changeAddr") {
                     wx.navigateBack({
                         delta: 1
