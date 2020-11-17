@@ -1,0 +1,47 @@
+/* pages/help/help.wxss */
+page{
+  background-color: #eee;
+}
+.box {
+width: 750rpx;
+}
+.help_title {
+  width: 750rpx;
+  height: 104rpx;
+  line-height: 104rpx;
+  color: #fff;
+  background-color: #000;
+}
+.help_title text{
+  font-size: 40rpx;
+  font-weight: 300;
+  margin-left: 32rpx;
+}
+.help_list_lis {
+  width: 750rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  margin-top: 2rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.help_list_lis text{
+  font-size: 32rpx;
+  margin-left: 24rpx;
+}
+.help_list_lis view{
+  width: 14rpx;
+  height: 24rpx;
+  margin-right: 24rpx;
+}
+.help_list_lis view image{
+  width: 14rpx;
+  height: 24rpx;
+}
+.helo_image {
+  margin-top: 32rpx;
+  background-color: #fff;
+  width: 750rpx;
+  height: 718rpx;
+}

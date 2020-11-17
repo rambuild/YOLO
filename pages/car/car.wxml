@@ -1,0 +1,44 @@
+<view class="car">
+	<view class="title">
+		<view>我的购物车</view>
+		<view>编辑</view>
+	</view>
+	<block wx:for="{{goodsList}}" wx:key="index">
+		<view class="main">
+			<view class="tick">
+				<view data-tickIndex="{{index}}" bindtap="selected">
+					<image src="{{item.selected?'../../static/icon/选中.png':'../../static/icon/未选中.png'}}" />
+				</view>
+			</view>
+			<view class="img">
+				<image src="{{item.img1}}" />
+			</view>
+			<view class="show">
+				<view class="goodTitle">{{item.goodsName}}</view>
+				<view class="type">
+					<view>品类：{{item.category}}</view>
+					<view>￥{{item.price}}</view>
+				</view>
+				<view class="clr">颜色分类：{{item.color}}</view>
+				<view class="code">
+					<view>尺码：{{item.size}}</view>
+					<view>
+						<text data-goodsIndex="{{index}}" bindtap="minusGoodsItem" decode="true"> &lt; </text>
+						<text style="margin:0 30rpx">{{item.num}}</text>
+						<text data-goodsIndex="{{index}}" bindtap="addGoodsItem" decode="true"> &gt; </text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</block>
+	<view class="bottem">
+		<view class="total">
+			<view bindtap="checkAll">
+				<image src="{{chooseAll?'../../static/icon/选中.png':'../../static/icon/未选中.png'}}" />
+			</view>
+			<view>合计：￥{{total}}</view>
+		</view>
+		<view class="account" bindtap='settlement'>结算</view>
+	</view>
+</view>
+

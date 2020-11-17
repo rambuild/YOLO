@@ -1,0 +1,13 @@
+<view class="myWork">
+    <view class="myWork-title">我的作品</view>
+    <view class="myWork-cont">
+        <view class="custom-goods-box" wx:for='{{5}}' wx:key='index'>
+            <custom-goods name='潮牌棉质男装定制' imgsrc='/static/images/indexbg.png' imgStyle='width:326rpx;height:284rpx;' titleStyle='width:326rpx;'>
+                <view slot='cont' class="slotView">
+                    <image class="" src="/static/icon/list.png" ></image>
+                    <text class="" >2020/09/01</text>
+                </view>
+            </custom-goods>
+        </view>
+    </view>   
+</view>

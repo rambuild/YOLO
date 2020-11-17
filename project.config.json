@@ -1,0 +1,202 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "bundle": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.13.0",
+  "appid": "wxeb26da9f66b457cc",
+  "projectname": "%E5%AE%9A%E5%88%B6",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {
+    "beforeCompile": ""
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "详情",
+          "pathName": "pages/details/details",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "更多素材",
+          "pathName": "pages/material/material",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "支付详情",
+          "pathName": "pages/order-buy/order-buy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的定制",
+          "pathName": "pages/my-work/my-work",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "订单",
+          "pathName": "pages/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "redpacket",
+          "pathName": "pages/redpacket/redpacket",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "myAddress",
+          "pathName": "pages/myAddress/myAddress",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "address",
+          "pathName": "pages/address/address",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "my_message",
+          "pathName": "pages/my_message/my_message",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "myPhotoGo",
+          "pathName": "pages/myPhotoGo/myPhotoGo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "help",
+          "pathName": "pages/help/help",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "Invitation",
+          "pathName": "pages/Invitation/Invitation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "Share",
+          "pathName": "pages/Share/Share",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "comment",
+          "pathName": "pages/comment/comment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/details/details",
+          "pathName": "pages/details/details",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "pages/myAddress/myAddress",
+          "pathName": "pages/myAddress/myAddress",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "pages/address/address",
+          "pathName": "pages/address/address",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "pages/car/car",
+          "pathName": "pages/car/car",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/order",
+          "pathName": "pages/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/order",
+          "pathName": "pages/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order-buy/order-buy",
+          "pathName": "pages/order-buy/order-buy",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<form bindsubmit="formSubmit">
+  <view class="address">
+    <view class="title">
+      <view>添加地址</view>
+      <view>
+        <button plain class="add" formType="submit" size="mini" data-type="2" bindtap="btn">
+          保存
+        </button>
+      </view>
+    </view>
+    <view class="addressDetail">
+      <view class="goods">
+        <input bindblur="phone" type="number" name="phone" placeholder-class="r" value="{{phone}}" placeholder="手机号码" />
+      </view>
+      <view class="item">
+        <input name="men" placeholder-class="r" value="{{nick}}" placeholder="收货人" />
+      </view>
+      <view class="item">
+        <picker name="picker" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="newR">
+            当前选择：<text hidden="{{region.length==0}}">{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+          </view>
+        </picker>
+      </view>
+      <view class="item">
+        <input name="address" placeholder-class="r" placeholder="详细地址：如道路、门牌号、小区、楼栋号、单元" />
+      </view>
+    </view>
+  </view>
+</form>

@@ -1,0 +1,158 @@
+.box {
+  width: 750rpx;
+  background-color: #eee;
+}
+.box_message {
+  position: relative;
+  width: 750rpx;
+  height:300rpx;
+  background-color: #000;
+  border-radius: 0 0 4rpx 4rpx;
+}
+.box_message_list {
+  height: 112rpx;
+  width:686rpx;
+  margin: auto;
+  line-height: 112rpx;
+  background-color:#000;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+.messageone{
+  font-size: 32rpx !important;
+}
+.messagetow{
+  font-size: 26rpx !important;
+}
+.box_message_make {
+  position: relative;
+  width: 686rpx;
+  height: 152rpx;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 4rpx;
+  display: flex;
+  line-height: 152rpx;
+  justify-content: space-between;
+}
+.icon {
+  flex: 1;
+}
+.icon image{
+  display: inline-block;
+  top: 40rpx;
+  margin-left: 32rpx;
+  position: absolute;
+  height: 70rpx;
+  width: 70rpx;
+}
+.icon text {
+ margin-left: 126rpx;
+}
+.active {
+  width: 160rpx;
+  height: 1rpx;
+  border: 4rpx solid #000;
+  border-radius: 2rpx;
+}
+.l {
+  position: absolute;
+  top: 259rpx;
+  left: 100rpx;
+}
+.r {
+  position: absolute;
+  top: 259rpx;
+  left: 444rpx;
+}
+.content {
+  margin-top: 38rpx;
+  width: 750rpx;
+  height: 850rpx;
+  background-color: #fff;
+  overflow: hidden;
+}
+.item{
+  width: 686rpx;
+  height: 276rpx;
+  margin: 30rpx auto;
+  border: 1rpx solid #ccc;
+}
+.item_title {
+  width: 622rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.item_title text:nth-child(1){
+  font-size: 32rpx;
+}
+.item_title text:nth-child(2){
+  font-size: 26 rpx;
+}
+.item_message {
+  width: 622rpx;
+  height: 182rpx;
+  margin: auto;
+  display: flex;
+}
+.item_message_image{
+  width: 182rpx;
+  height: 182rpx;
+  border: 1rpx dashed #ccc;
+  margin-right: 40rpx;
+}
+.item_message_image image{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.item_message_text view:nth-child(1){
+  font-size: 32rpx;
+}
+.item_message_text view{
+  font-size: 24rpx;
+  line-height: 40rpx;
+  color: rgba(0, 0, 0, 0.7);
+}
+.list {
+  display: flex;
+  position: relative;
+  width: 636rpx;
+  height: 150rpx;
+  margin: auto;
+  border-bottom:4rpx solid #DADADA;
+}
+.list_image {
+  width: 106rpx;
+  height: 106rpx;
+  border: 1rpx dashed #333;
+  margin-top: 32rpx;
+}
+.list_image image {
+  display: inline-block;
+  width: 106rpx;
+  height: 106rpx;
+  border-radius: 50%;
+}
+.list_message{
+  margin-top: 32rpx;
+  margin-left:28rpx ;
+}
+.list_message view:nth-child(1){
+  font-size: 32rpx;
+}
+.list_message view:nth-child(2){
+  font-size: 26rpx;
+}
+.list_time {
+  position: absolute;
+  right: 0;
+  height: 150rpx;
+  line-height: 150rpx;
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.45);
+}

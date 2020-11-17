@@ -1,0 +1,11 @@
+<!--pages/Share/Share.wxml-->
+<view class="box">
+  <view class="title">我的分享码</view>
+  <view class="email">
+    <view class="qrcode">二维码</view>
+  </view>
+  <view class="text">邀请好友加入YOLO，在好友完成订单后</view>
+  <view class="text">您可以获得已完成订单一定比例的提成</view>
+  <view class="text">赶紧邀请好友加入吧</view>
+  <view class="invite" bindtap="shareFriend">邀请好友</view>
+</view>

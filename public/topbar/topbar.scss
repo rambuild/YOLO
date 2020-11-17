@@ -1,0 +1,26 @@
+.topbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    .benchmarking{
+        position: relative;
+        >image{
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 32rpx;
+            transform: translateY(-50%);
+            width: 18rpx;
+            height: 32rpx;
+        }
+        >.title{
+            text-align: center;
+            font-size: 40rpx;
+            font-family: "Source Han Sans CN";
+            font-weight: Regular;
+            color: white;
+        }
+    }
+}

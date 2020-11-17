@@ -1,0 +1,86 @@
+<!--pages/diy/diy.wxml-->
+<view class="diy" hover-class="none" hover-stop-propagation="false">
+	<custom-topbar
+	 background='black'
+	 color='white'
+	 title='定制'
+	 canBack='{{false}}'
+	/>
+	<view class="diy-content" style="top:{{menuButton.bottom}}px;">
+		<view class="diy-left">
+			<scroll-view
+			 class=""
+			 scroll-x="false"
+			 scroll-y="true"
+			 show-scrollbar='false'
+			 enhanced='true'
+			 style="height:{{systemInfo.windowHeight-menuButton.bottom}}px"
+			>
+				<view
+				 class="item"
+				 wx:for='{{levelTwo[levelOneTab]}}'
+				 wx:key='index'
+				 bindtap="levelTwotap"
+				 data-tab='{{index}}'
+				>
+					{{item.goodsTypeName}}
+					<view class="line" wx:if='{{levelTwoTab==index}}' />
+				</view>
+			</scroll-view>
+		</view>
+		<view class="diy-right">
+			<scroll-view
+			 class="topView"
+			 scroll-x="true"
+			 scroll-y="false"
+			 show-scrollbar='false'
+			 enhanced='true'
+			>
+				<view
+				 class="itembox"
+				 wx:for='{{levelOne}}'
+				 wx:key='index'
+				 bind:tap="levelOnetap"
+				 data-tab='{{index}}'
+				>
+					<view class="item">
+						{{item.goodsTypeName}}
+						<view class="line" wx:if='{{levelOneTab==index}}' />
+					</view>
+				</view>
+			</scroll-view>
+			<scroll-view
+			 class="bottomView"
+			 scroll-y="true"
+			 show-scrollbar='false'
+			 enhanced='true'
+			 style="height:{{systemInfo.windowHeight-menuButton.bottom-(systemInfo.windowWidth/750)*98}}px"
+			>
+				<view class="bottomViewFlex">
+					<view
+					 class="custombox"
+					 wx:for='{{product}}'
+					 wx:key='index'
+					 bind:tap='navigateDetails'
+					 data-item='{{index}}'
+					>
+						<custom-goods
+						 name='{{item.goodsName}}'
+						 imgsrc='{{item.img}}'
+						 imgStyle='width:246rpx;height:212rpx;'
+						 titleStyle='width:246rpx;'
+						>
+							<view slot='cont' class="slotView">
+								<view class="inner">
+									<image class="" src="/static/icon/list.png" />
+									<text class="" >￥{{item.price}}</text>
+								</view>
+							</view>
+						</custom-goods>
+					</view>
+				</view>
+			</scroll-view>
+		</view>
+	</view>
+</view>
+

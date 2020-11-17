@@ -1,0 +1,46 @@
+.myWork{
+    font-family: "Source Han Sans CN";
+}
+.myWork-title{
+    height: 104rpx;
+    line-height: 104rpx;
+    padding-left: 32rpx;
+    background-color: black;
+    color: white;
+    font-size: 40rpx;
+    font-weight: Light;
+}
+.myWork-cont{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20rpx 32rpx 0;
+}
+.myWork-cont::after{
+    display: block;
+    content: "";
+}
+.custom-goods-box{
+    width: 326rpx;
+    margin-bottom: 74rpx;
+}
+.myWork .slotView {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 326rpx;
+    height: 74rpx;
+    border-radius: 0 0 4rpx 4rpx;
+    margin: 0 auto;
+    background: black;
+    font-size: 24rpx;
+    color: white;
+  }
+  
+.myWork .slotView > image {
+    display: block;
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 16rpx;
+}

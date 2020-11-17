@@ -1,0 +1,70 @@
+.scrollview{
+    overflow: hidden;
+    height: 96rpx;
+    width: 750rpx;
+    background-color: black;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Source Han Sans CN";
+    white-space: nowrap;
+}
+.scroll-item{
+    position: relative;
+    display: inline-block;
+    padding: 32rpx;
+    font-size: 32rpx;
+}
+.scroll-item .line{
+    position: absolute;
+    top:90rpx;
+    background-color: white;
+    height: 4rpx;
+    transition: left 0.5s , width 0.5s;
+}
+.scroll-item .active{
+    color: rgba(255, 255, 255, 1);
+}
+.cont-img{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20rpx 40rpx;
+}
+.cont-img-item{
+    display: block;
+    width: 202rpx;
+    height: 194rpx;
+    margin-top: 20rpx;
+}
+.cont-img::after{
+    content: "";
+    width: 202rpx;
+}
+.bar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    height: 100rpx;
+    width: 750rpx;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: #000;
+}
+.bar-item{
+    width: 25%;
+}
+.bar-item >image{
+    display: block;
+    width: 40rpx;
+    height: 36rpx;
+    margin:0 auto 8rpx;
+}
+.bar-item >text{
+    display: block;
+    text-align: center;
+    font-size: 26rpx;
+    color: rgba(255, 255, 255, 0.5);
+}
+.bar-item >.select{
+    color: rgba(255, 255, 255, 1); 
+}

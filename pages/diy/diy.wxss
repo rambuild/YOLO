@@ -1,0 +1,114 @@
+.diy-content {
+  position: fixed;
+  left: 0;
+  display: grid;
+  grid-template-columns: 170rpx 580rpx;
+}
+
+.item {
+  position: relative;
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+}
+
+.item > .line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60rpx;
+  height: 2rpx;
+  margin-left: 55rpx;
+  border-radius: 1rpx;
+  background-color: white;
+}
+
+.diy-left, .diy-right {
+  overflow: hidden;
+  width: 170rpx;
+  background: black;
+}
+
+.diy-left .item, .diy-right .item {
+  position: relative;
+  width: 170rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+}
+
+.diy-left .item .line, .diy-right .item .line {
+  position: absolute;
+  left: 0;
+  bottom: 2rpx;
+  width: 60rpx;
+  height: 2rpx;
+  margin-left: 55rpx;
+  border-radius: 1rpx;
+  background-color: white;
+}
+
+.diy-right {
+  width: 580rpx;
+  min-height: auto;
+  background: white;
+}
+
+.diy-right .topView {
+  overflow: hidden;
+  width: auto;
+  height: 98rpx;
+  white-space: nowrap;
+  background: black;
+}
+
+.diy-right .topView .itembox {
+  display: inline-block;
+  width: 170rpx;
+}
+
+.diy-right .bottomView {
+  width: 580rpx;
+  background: #eee;
+}
+
+.diy-right .bottomView .bottomViewFlex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 32rpx;
+}
+
+.diy-right .bottomView .custombox {
+  width: 246rpx;
+}
+
+.slotView {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 54rpx;
+  border-radius: 0 0 4rpx 4rpx;
+  margin: 0 auto;
+  background: black;
+  font-size: 24rpx;
+  color: white;
+}
+
+.slotView image {
+  display: block;
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 16rpx;
+}
+
+.inner {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}

@@ -1,0 +1,66 @@
+<!--pages/redpacket/redpacket.wxml-->
+<view class="box">
+  <view class="titleone">我的作品</view>
+  <view class="myPhoto">
+    <view class="myPhoto_item">
+      <view>
+        <image src="/static/images/indexbg.png"></image>
+      </view>
+      <view>潮牌棉质男装定制</view>
+      <view>
+        <view>
+          <image src="/static/icon/定制未选中@2x.png"></image>
+        </view>
+        <view>2020/09/01</view>
+      </view>
+    </view>
+    <view class="myPhoto_item">
+      <view>
+        <image src="/static/images/indexbg.png"></image>
+      </view>
+      <view>潮牌棉质男装定制</view>
+      <view>
+        <view>
+          <image src="/static/icon/定制未选中@2x.png"></image>
+        </view>
+        <view>2020/09/01</view>
+      </view>
+    </view>
+    <view class="myPhoto_item">
+      <view>
+        <image src="/static/images/indexbg.png"></image>
+      </view>
+      <view>潮牌棉质男装定制</view>
+      <view>
+        <view>
+          <image src="/static/icon/定制未选中@2x.png"></image>
+        </view>
+        <view>2020/09/01</view>
+      </view>
+    </view>
+    <view class="myPhoto_item">
+      <view>
+        <image src="/static/images/indexbg.png"></image>
+      </view>
+      <view>潮牌棉质男装定制</view>
+      <view>
+        <view>
+          <image src="/static/icon/定制未选中@2x.png"></image>
+        </view>
+        <view>2020/09/01</view>
+      </view>
+    </view>
+    <view class="myPhoto_item">
+      <view>
+        <image src="/static/images/indexbg.png"></image>
+      </view>
+      <view>潮牌棉质男装定制</view>
+      <view>
+        <view>
+          <image src="/static/icon/定制未选中@2x.png"></image>
+        </view>
+        <view>2020/09/01</view>
+      </view>
+    </view>
+  </view>
+</view>

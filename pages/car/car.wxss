@@ -1,0 +1,143 @@
+.car {
+	width: 750rpx;
+	padding-bottom: 140rpx;
+}
+.title {
+	width: 686rpx;
+	padding: 0 33rpx;
+	height: 80rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #000;
+	color: #fff;
+}
+.title > view:nth-of-type(1) {
+	font-size: 40rpx;
+	line-height: 80rpx;
+}
+.title > view:nth-of-type(2) {
+	font-size: 32rpx;
+	line-height: 80rpx;
+}
+.main {
+	width: 686rpx;
+	height: 250rpx;
+	background-color: white;
+	border-radius: 12rpx;
+	box-shadow: 0rpx 3rpx 10rpx rgba(0, 0, 0, 0.3);
+	margin: 34rpx auto 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.tick {
+	width: 116rpx;
+	height: 170rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.tick > view {
+	width: 40rpx;
+	height: 40rpx;
+	border-radius: 50%;
+}
+.tick > view > image {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.img {
+	width: 170rpx;
+	height: 170rpx;
+	border-radius: 4rpx;
+}
+.img > image {
+	width: 100%;
+	height: 100%;
+	border-radius: 4rpx;
+}
+.show {
+	width: 340rpx;
+	padding: 0 28rpx 0 32rpx;
+	height: 170rpx;
+	display: flex;
+	flex-direction: column;
+}
+.goodTitle {
+	font-size: 20rpx;
+}
+.type {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10rpx;
+}
+.type > view:nth-of-type(1) {
+	font-size: 24rpx;
+	color: #000;
+	opacity: 0.7;
+}
+.type > view:nth-of-type(2) {
+	font-size: 26rpx;
+	margin-bottom: 5rpx;
+}
+.clr {
+	opacity: 0.7;
+	font-size: 24rpx;
+	margin-top: 10rpx;
+}
+.code {
+	font-size: 24rpx;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10rpx;
+}
+.code > view:nth-of-type(1) {
+	opacity: 0.7;
+}
+.bottem {
+	width: 100%;
+	height: 100rpx;
+	display: flex;
+	justify-content: space-between;
+	background-color: #fff;
+	position: fixed;
+	bottom: 0;
+}
+.total {
+	width: 70%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.total > view:nth-of-type(1) {
+	width: 40rpx;
+	height: 40rpx;
+	border-radius: 50%;
+	margin-left: 80rpx;
+}
+.total > view:nth-of-type(1) > image {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.total > view:nth-of-type(2) {
+	height: 32rpx;
+	font-size: 32rpx;
+	color: #000;
+	margin-right: 30rpx;
+	justify-content: s;
+}
+.account {
+	width: 30%;
+	height: 100%;
+	text-align: center;
+	line-height: 100rpx;
+	font-size: 32rpx;
+	background-color: #000;
+	color: #fff;
+}

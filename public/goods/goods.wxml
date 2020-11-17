@@ -1,0 +1,18 @@
+<view class="public-goods">
+	<image
+	 class=""
+	 src="{{imgsrc}}"
+	 lazy-load="false"
+	 style="{{imgStyle}}"
+	/>
+	<view
+	 class="title"
+	 hover-class="none"
+	 hover-stop-propagation="false"
+	 style="{{titleStyle}}"
+	>
+		{{name}}
+	</view>
+	<slot name="cont" />
+</view>
+

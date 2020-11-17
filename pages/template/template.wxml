@@ -1,0 +1,19 @@
+<!-- 模板 -->
+<view class="meterial">
+    <custom-topbar background='white' color='black' title='定制' canBack='{{true}}' />
+    <scroll-view class="scrollview" scroll-x="true" scroll-with-animation="true">
+        <view class="scroll-item" wx:for='{{6}}' wx:key="index" bind:tap="animationTab" data-tab='{{index}}'>
+            <view class="text {{tab==index?'active':''}}">tab1</view>
+            <view class="line" style='left:{{line.left}}px;width:{{line.width}}px;' wx:if='{{index==0}}'></view>
+        </view>
+    </scroll-view>
+    <view class="cont-img">
+        <image class="cont-img-item" src="/static/images/indexbg.png" wx:for='{{11}}' wx:key="index"></image>
+    </view>
+    <view class="bar">
+        <view class="bar-item" wx:for='{{tabbar}}' wx:key='index' bind:tap="changeCustomTab" data-tab='{{index}}' >
+            <image class="" src="{{index==tabbarIndex?item.select:item.icon}}"></image>
+            <text class="{{index==tabbarIndex?'select':''}}" >{{item.text}}</text>
+        </view>
+    </view>
+</view>

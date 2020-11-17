@@ -1,0 +1,20 @@
+.public-goods {
+  margin-bottom: 32rpx;
+}
+
+.public-goods > image {
+  display: block;
+  width: 246rpx;
+  height: 212rpx;
+}
+
+.public-goods > .title {
+  width: 246rpx;
+  height: 54rpx;
+  text-align: center;
+  line-height: 54rpx;
+  font-size: 24rpx;
+  font-family: "Source Han Sans CN";
+  font-weight: lighter;
+  background-color: white;
+}

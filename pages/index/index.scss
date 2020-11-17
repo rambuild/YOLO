@@ -1,0 +1,90 @@
+//index.wxss
+@mixin wh($width:750rpx, $height:1104rpx){
+  width: $width;
+  height: $height;
+}
+@mixin font($size:30rpx,$weight:normal,$align:center,$line-height:normal) {
+  font-size: $size;
+  font-weight: $weight;
+  text-align: $align;
+  line-height: $line-height;
+} 
+page{
+  font-family: "Source Han Sans CN";
+  background-color: #eee;
+}
+.index{
+  >.header{
+    position: relative;
+    background-color: transparent;
+    @include wh();
+    >.bg{
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      @include wh();
+      .imgbg{
+        @include wh();
+      }
+    }
+
+    >.title{
+      font-size: 40rpx;
+      color: white;
+      text-align: center;
+    }
+    >.list{
+      margin-top: 30rpx;
+      // 去除默认样式
+      view,scroll-view{
+        background-color: transparent !important;
+      }
+      .van-tabs__line{
+        background-color:white !important;
+      }
+    }
+    >.cont{
+      text-align: center;
+      >.h1{
+        @include font(100rpx,bold);
+        margin-top: 120rpx;
+      }
+      >.h2{
+        @include font(32rpx,light);
+        margin-top:32rpx;
+      }
+      >.btn{
+        @include font(32rpx,bold,cneter,68rpx);
+        @include wh(206rpx,68rpx);
+        margin: 48rpx auto 0;
+        border: 1px solid #000; 
+      }
+    }
+  }
+  >.week{
+    @include wh(750rpx,172rpx);
+    background-color: white;
+    >.price{
+      height: 80rpx;
+      border-bottom: 2px solid #eee;
+      @include font(24rpx,light,center,80rpx)
+    }
+    >.recommded{
+      padding-left: 32rpx;
+      @include font(48rpx,bold,left,88rpx);
+    }
+  }
+  >.product{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 36rpx 30rpx;
+  }
+  // .product:after {
+  //     clear: both;
+  //     content: '';
+  //     flex: auto;
+  //   }
+}

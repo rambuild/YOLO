@@ -1,0 +1,55 @@
+<!--index.wxml-->
+<view class="index">
+	<view class="header">
+		<swiper class="bg" indicator-dots current="{{active}}">
+			<swiper-item wx:for='{{banner.bannerImg}}' wx:key='index'>
+				<image
+				 class="imgbg"
+				 src="{{item}}"
+				 mode="aspectFit|aspectFill|widthFix"
+				 lazy-load="false"
+				/>
+			</swiper-item>
+		</swiper>
+		<!-- <view class="title" style="padding-top:{{menuButton.top}}px; height:{{menuButton.height}}px;line-height:{{menuButton.height}}px;">首页</view> -->
+		<custom-topbar
+		 background='transparent'
+		 color='white'
+		 title='首页'
+		 canBack='{{false}}'
+		/>
+		<view class="list">
+			<van-tabs active="{{ active }}" color='white' bind:change="onChange">
+				<van-tab
+				 title="{{item.goodsTypeName}}"
+				 title-style="color:white;font-size:40rpx;"
+				 wx:for='{{banner.origin}}'
+				 wx:key='index'
+				/>
+			</van-tabs>
+		</view>
+		<view class="cont">
+			<view class="h1">{{banner.origin[active].title}}</view>
+			<view class="h2">{{banner.origin[active].text1}}</view>
+			<view class="btn" bindtap="diyGO">查看更多</view>
+		</view>
+	</view>
+	<view class="week">
+		<view class="price">{{banner.origin[active].text2}}</view>
+		<view class="recommded">本周推荐</view>
+
+	</view>
+	<view class="product">
+		<custom-goods
+		 name='{{item.goodsName}}'
+		 imgsrc='{{item.img}}'
+		 imgStyle='width:326rpx;height:284rpx;'
+		 titleStyle='width:326rpx;'
+		 wx:for='{{indexList}}'
+		 wx:key='index'
+		 bind:tap='navProduct'
+		 data-item='{{index}}'
+		/>
+	</view>
+</view>
+

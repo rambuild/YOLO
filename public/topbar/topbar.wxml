@@ -1,0 +1,7 @@
+<view class="topbar" style="background:{{background}};padding-top:{{menuButton.top}}px;">
+  <view class="benchmarking">
+    <image src="/static/icon/back.png" wx:if="{{canBack}}"></image>
+    <view class="title" style=" height:{{menuButton.height}}px;line-height:{{menuButton.height}}px;color:{{color}}">{{title}}</view>
+  </view>
+</view>
+<view style="height:{{menuButton.bottom+4}}px"></view>

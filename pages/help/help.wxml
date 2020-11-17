@@ -1,0 +1,12 @@
+<!--pages/help/help.wxml-->
+<view class="box">
+  <view class="help_title"><text>帮助</text></view>
+  <view class="help_list">
+    <view class="help_list_lis"><text>售后问题</text><view><image src="/static/icon/next.png"></image></view></view>
+    <view class="help_list_lis"><text>素材处理</text><view><image src="/static/icon/next.png"></image></view></view>
+    <view class="help_list_lis"><text>退换货</text><view><image src="/static/icon/next.png"></image></view></view>
+  </view>
+  <view class="helo_image">
+
+  </view>
+</view>

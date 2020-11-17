@@ -1,0 +1,113 @@
+<view class="user">
+	<view class="headBg">
+		<view class="bg">
+			<image src="../../static/images/userBg.png" />
+		</view>
+		<view class="setIcon">
+			<image src="../../static/icon/路径 862@2x.png" />
+		</view>
+	</view>
+	<view class="portrait">
+		<image src="{{user.wxUrl? user.wxUrl :'https://ps.ssl.qhimg.com/t01183c934aa42910a3.jpg'}}" />
+	</view>
+	<view class="order">
+		<view class="myGetOrder">
+			<view bindtap="orderGo">我的订单</view>
+			<view bindtap="orderGo">查看全部</view>
+		</view>
+		<view class="name">{{user.wxNick?user.wxNick :'点击授权'}}
+			<button
+			 open-type="getUserInfo"
+			 class='getUserInfo'
+			 bindgetuserinfo="getUserInfo"
+			 wx:if='{{!user.wxNick}}'
+			/>
+		</view>
+		<view class="line" />
+		<view class="process">
+			<view class="item" data-mark="1" bindtap="orderGo">
+				<view>
+					<image src="../../static/icon/待付款.png" />
+				</view>
+				<view>待付款</view>
+			</view>
+			<view class="item" data-mark="2" bindtap="orderGo">
+				<view>
+					<image src="../../static/icon/待发货.png" />
+				</view>
+				<view>待发货</view>
+			</view>
+			<view class="item" data-mark="3" bindtap="orderGo">
+				<view>
+					<image src="../../static/icon/待收货.png" />
+				</view>
+				<view>待收货</view>
+			</view>
+			<view class="item" data-mark="4" bindtap="orderGo">
+				<view>
+					<image src="../../static/icon/待评论.png" />
+				</view>
+				<view>待评价</view>
+			</view>
+		</view>
+	</view>
+	<view class="ser">
+		<view class="mySer">
+			<view>我的服务</view>
+		</view>
+		<view class="line" />
+		<view class="process" style="margin-top:62rpx">
+			<view class="item" bindtap="goToRedPacket">
+				<view>
+					<image src="../../static/icon/优惠券.png" />
+				</view>
+				<view>优惠卷</view>
+			</view>
+			<view class="item" bindtap="addressGo">
+				<view>
+					<image src="../../static/icon/address.png" />
+				</view>
+				<view>地址</view>
+			</view>
+			<view class="item" bindtap="invitationGO">
+				<view>
+					<image src="../../static/icon/邀请有礼.png" />
+				</view>
+				<view>邀请有礼</view>
+			</view>
+			<view class="item" bindtap="myMessageGo">
+				<view>
+					<image src="../../static/icon/我的消息.png" />
+				</view>
+				<view>我的信息</view>
+			</view>
+		</view>
+		<view class="process" style="margin-top:62rpx">
+			<view class="item" bindtap="myPhotoGo">
+				<view>
+					<image src="../../static/icon/我的作品.png" />
+				</view>
+				<view>我的作品</view>
+			</view>
+			<view class="item" bindtap="commentGo">
+				<view>
+					<image src="../../static/icon/我的评论.png" />
+				</view>
+				<view>我的评价</view>
+			</view>
+			<view class="item">
+				<view>
+					<image src="../../static/icon/service.png" />
+				</view>
+				<view>客服售后</view>
+			</view>
+			<view class="item" bindtap="helpGo">
+				<view>
+					<image src="../../static/icon/帮助.png" />
+				</view>
+				<view>帮助</view>
+			</view>
+		</view>
+	</view>
+</view>
+

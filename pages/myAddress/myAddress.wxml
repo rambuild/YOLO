@@ -1,0 +1,39 @@
+<view class="myAddress">
+	<view class="title">
+		<view>我的地址</view>
+		<view bindtap="addressGo" data-action="add">添加地址</view>
+	</view>
+	<radio-group bindchange="radioChange">
+		<view class="box" wx:for="{{userAddress}}" wx:key="index">
+			<view class="address">
+				<view class="addressIcon">
+					<view>
+						<image src="../../static/icon/地址.png" />
+					</view>
+				</view>
+				<view class="content">
+					<view class="basic">
+						<view>{{userAddress[index].nick}}</view>
+						<view>{{userAddress[index].phone}}</view>
+					</view>
+					<view class="addressDetail">地址: {{userAddress[index].address}}</view>
+				</view>
+				<view
+				 class="bj"
+				 bindtap="addressGo"
+				 data-action="edit"
+				 data-item="{{userAddress[index]}}"
+				>编辑
+				</view>
+			</view>
+			<view class="make">
+				<view class="checkbox">
+					<radio value="{{userAddress[index].id}}" checked="{{userAddress[index].type==2}}">设为默认地址</radio>
+				</view>
+				<view class="sc" data-id="{{userAddress[index]}}" bindtap="remove">删除</view>
+			</view>
+		</view>
+	</radio-group>
+
+</view>
+

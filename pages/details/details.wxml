@@ -1,0 +1,162 @@
+<view class="details">
+	<view class="banner">
+		<image src="{{proInf.img}}" mode='aspectFit' />
+		<view class="title">
+			<view class="title-name">
+				<view>{{proInf.goodsName}}</view>
+				<view class="price">￥{{proInf.price}}</view>
+			</view>
+			<image src="/static/icon/share.png" />
+			<view class="coupe">领券</view>
+		</view>
+	</view>
+	<view class="choose">
+		<van-collapse value="{{activeNames}}" bind:change="onChange">
+			<van-collapse-item title="选择" name="1" title-class='customClass'>
+				<view hidden="{{proSku.length == 0}}">
+					<view class="classification">
+						<view class="category-left">颜色</view>
+						<view class="category-right">
+							<view
+							 class="category-item {{selTapOne == index?'category-active':''}}"
+							 wx:for="{{proSku}}"
+							 wx:key='id'
+							 data-item='{{index}}'
+							 bindtap='selOneTap'
+							>{{item.skuName}}
+							</view>
+						</view>
+					</view>
+					<view class="classification">
+						<view class="category-left">品类</view>
+						<view class="category-right">
+							<view
+							 class="category-item {{selTapTwo == index?'category-active':''}}"
+							 wx:for="{{proSku[0].goodsSkuList}}"
+							 wx:key="id"
+							 data-item='{{index}}'
+							 bindtap='selTwoTap'
+							>{{item.skuName}}
+							</view>
+						</view>
+					</view>
+					<view class="classification">
+						<view class="category-left">款型</view>
+						<view class="category-right">
+							<view
+							 class="category-item {{selTapThree == index?'category-active':''}}"
+							 data-item='{{index}}'
+							 wx:for="{{proSku[0].goodsSkuList[0].goodsSkuList}}"
+							 wx:key="id"
+							 bindtap='selThreeTap'
+							>{{item.skuName}}
+							</view>
+						</view>
+					</view>
+					<view class="classification">
+						<view class="category-left">尺寸</view>
+						<view class="category-right">
+							<view
+							 class="category-item {{selTapFour == index?'category-active':''}}"
+							 data-item='{{index}}'
+							 bindtap='selFourTap'
+							 wx:for="{{proSku[0].goodsSkuList[0].goodsSkuList[0].sizeList}}"
+							 wx:key="index"
+							>{{item}}
+							</view>
+						</view>
+					</view>
+				</view>
+			</van-collapse-item>
+		</van-collapse>
+	</view>
+
+	<view class="afterbuy">
+		<view class="header">
+			<view bindtap='changeTab' data-tab='1'>
+				<view class="controlw {{tab==1?'active':''}}">详情</view>
+			</view>
+			<view class="c-line" />
+			<view bindtap='changeTab' data-tab='2'>
+				<view class="controlw {{tab==2?'active':''}}">评论</view>
+			</view>
+		</view>
+		<view class="content">
+			<view class="goodsInfo" hidden="{{tab!=1}}">
+				{{proInf.info}}
+			</view>
+			<view
+			 class="cont-item"
+			 wx:for="{{goodsComment}}"
+			 wx:key="wxNick"
+			 hidden="{{tab!=2}}"
+			>
+				<view class="cont-item-top">
+					<image src="{{item.wxUrl}}" />
+					<view class="user">
+						<view class="">{{item.wxNick}}</view>
+						<view class="">{{item.phone || '******'}}</view>
+					</view>
+					<view class="love-score">
+						<image src="/static/icon/love.png" wx:for="{{item.scoreArr}}" wx:key="index" />
+					</view>
+				</view>
+				<view class="cont-font">
+					{{item.evaluation}}
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="gobuy">
+		<image src="/static/icon/service.png" />
+		<image src="/static/icon/cart.png" bindtap='toOrder' />
+		<view bind:tap='navClothes'>立即定制</view>
+	</view>
+	<!-- 定制完后弹窗 -->
+	<view class="poupe" style="height:{{windowH}}px;" wx:if='{{isAfterDiy}}'>
+		<view class="mask" />
+		<view class="poupe-cont">
+			<view class="poupe-top">
+				<image class="product-left" src="/static/images/indexbg.png" />
+				<view class="product-right">
+					<view class="product-right-top">DIY莱卡棉长袖T恤</view>
+					<view class="product-right-bottom">
+						<view>￥69</view>
+						<view>
+							<image src="/static/icon/back.png" />
+							<text class="number">1</text>
+							<image src="/static/icon/next.png" />
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="poupe-bottom">
+				<view class="poupe-bottom-column">
+					<text>品类：</text>
+					<text>落肩T恤</text>
+				</view>
+				<view class="poupe-bottom-column">
+					<text>品类：</text>
+					<text>落肩T恤</text>
+				</view>
+				<view class="poupe-bottom-column">
+					<text>品类：</text>
+					<text>落肩T恤</text>
+				</view>
+				<view class="poupe-bottom-column poupe-bottom-column-spc">
+					<text>型号：</text>
+					<text>XL</text>
+					<text>XXL</text>
+					<text>XXXL</text>
+				</view>
+			</view>
+		</view>
+		<view class="poupe-gobuy">
+			<image src="/static/icon/service.png" />
+			<image src="/static/icon/cart.png" />
+			<view>加入购物车</view>
+			<view>立即购买</view>
+		</view>
+	</view>
+</view>
+

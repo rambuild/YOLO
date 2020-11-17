@@ -1,0 +1,15 @@
+{
+  "name": "diy_wxapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.5.0",
+    "miniprogram-sm-crypto": "^0.2.1"
+  }
+}

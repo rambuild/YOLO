@@ -1,0 +1,146 @@
+.user {
+    width: 750rpx;
+}
+.headBg {
+    width: 100%;
+    height: 476rpx;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: -5rpx;
+}
+.bg > image {
+    width: 100%;
+    height: 100%;
+}
+.setIcon {
+    width: 36rpx;
+    height: 36rpx;
+    position: absolute;
+    right: 32rpx;
+    top: 32rpx;
+}
+.setIcon > image {
+    width: 100%;
+    height: 100%;
+}
+.portrait {
+    position: absolute;
+    z-index: 2;
+    left: 284rpx;
+    top: 108rpx;
+    width: 164rpx;
+    height: 164rpx;
+    border-radius: 50%;
+}
+.portrait > image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.order {
+    width: 686rpx;
+    height: 338rpx;
+    background-color: white;
+    position: absolute;
+    left: 32rpx;
+    top: 190rpx;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1rpx 12rpx;
+    border-radius: 4rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.myGetOrder {
+    width: 622rpx;
+    height: 32rpx;
+    margin-top: 32rpx;
+    display: flex;
+    justify-content: space-between;
+    font-size: 32rpx;
+}
+.name {
+    overflow: hidden;
+    position: relative;
+    height: 54rpx;
+    margin-top: 22rpx;
+    font-size: 46rpx;
+}
+.getUserInfo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 22;
+    height: 54rpx !important;
+    line-height: 54rpx;
+    width: 150rpx !important;
+    text-align: center;
+    padding: 0;
+    background: transparent;
+}
+.line {
+    width: 630rpx;
+    height: 4rpx;
+    background-color: #eee;
+    margin-top: 30rpx;
+}
+.process {
+    width: 100%;
+    height: 86rpx;
+    margin-top: 52rpx;
+    display: flex;
+    justify-content: space-evenly;
+}
+.item {
+    width: 105rpx;
+    height: 86rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.item > view:nth-of-type(1) {
+    width: 40rpx;
+    height: 40rpx;
+}
+.item > view:nth-of-type(1) > image {
+    width: 100%;
+    height: 100%;
+}
+.item > view:nth-of-type(2) {
+    font-size: 26rpx;
+    margin-top: 11rpx;
+}
+.ser {
+    width: 686rpx;
+    height: 464rpx;
+    background-color: white;
+    box-shadow: 0rpx 0rpx 15rpx rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 562rpx;
+    left: 32rpx;
+}
+.mySer {
+    font-size: 32rpx;
+    width: 100%;
+}
+.mySer > view:nth-of-type(1) {
+    margin-left: 36rpx;
+    margin-top: 28rpx;
+}
+.project {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 62rpx;
+}

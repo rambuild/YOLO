@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "custom-topbar":"../../public/topbar/topbar",
+        "custom-goods":"../../public/goods/goods"
+      }
+}

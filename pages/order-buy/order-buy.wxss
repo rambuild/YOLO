@@ -1,0 +1,115 @@
+page{
+    background-color: #eee;
+    font-family: "Source Han Sans CN";
+}
+.orderbuy{
+    padding: 46rpx 32rpx 0;
+}
+.order-address{
+    box-sizing: border-box;
+    width: 686rpx;
+    height: 214rpx;
+    display: grid;
+    grid-template-columns: 64rpx 388rpx;
+    padding: 30rpx 0 0 50rpx;
+    background-color: white;
+    border-radius: 4rpx;
+}
+.address-icon{
+    display: block;
+    width: 32rpx;
+    height: 38rpx;
+    margin-right: 32rpx;
+    margin-top: 61rpx;
+}
+.address-inf>text{
+    display: inline-block;
+    font-size: 48rpx;
+    font-weight: Regular;
+    margin-right: 16rpx;
+}
+.address-inf>text+text{
+    font-size: 32rpx;
+    font-weight: Regular;
+    opacity: 0.5;
+}
+.address-text{
+    word-break: break-all;
+    margin-top: 16rpx;
+}
+.orderinf{
+    margin-top: 32rpx;
+    background-color: white;
+    padding: 32rpx 32rpx 114rpx;
+    border-radius: 4rpx;
+}
+.orderinf>.product-inf{
+    display: grid;
+    grid-template-columns: 224rpx 1fr;
+    padding-bottom: 28rpx;
+}
+.orderinf>.product-inf>image{
+    display: block;
+    width: 192rpx;
+    height: 192rpx;
+    margin-right: 32rpx;
+}
+.product-title>text{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-clamp: 1;
+}
+.w70{
+    width: 70%;
+}
+.w50{
+    width: 50%;
+}
+.w30{
+    width: 30%;
+}
+.text-right{
+    text-align: right;
+}
+.text-font-size{
+    font-size: 32rpx;
+}
+.text-small-color{
+    font-size: 24rpx;
+    font-family: Light;
+    color: black;
+    opacity: 0.5;
+}
+.margin-x{
+    margin-top: 16rpx;
+    margin-bottom: 28rpx;
+}
+.order-bm{
+    border-bottom:4rpx solid #eee;
+    padding-top: 25rpx;
+}
+.order-row{
+    height: 90rpx;
+    line-height: 90rpx;
+}
+.order-row>text{
+    display: inline-block;
+}
+.order-pay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 268rpx;
+    height: 82rpx;
+    border-radius: 4rpx;
+    margin: 74rpx auto;
+    background-color: white;
+}
+.order-pay>image{
+    display: block;
+    width: 54rpx;
+    height: 46rpx;
+    margin-right: 22rpx;
+}

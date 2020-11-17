@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/diy/diy",
+    "pages/car/car",
+    "pages/user/user",
+    "pages/details/details",
+    "pages/material/material",
+    "pages/address/address",
+    "pages/myAddress/myAddress",
+    "pages/order-buy/order-buy",
+    "pages/my-work/my-work",
+    "pages/redpacket/redpacket",
+    "pages/my_message/my_message",
+    "pages/myPhotoGo/myPhotoGo",
+    "pages/help/help",
+    "pages/Invitation/Invitation",
+    "pages/Share/Share",
+    "pages/comment/comment"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "定制",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#b3b3b3",
+    "selectedColor": "#ffffff",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/tabbar/index.png",
+        "selectedIconPath": "/static/tabbar/indexed.png"
+      },
+      {
+        "pagePath": "pages/diy/diy",
+        "text": "定制",
+        "iconPath": "/static/tabbar/diy.png",
+        "selectedIconPath": "/static/tabbar/diyed.png"
+      },
+      {
+        "pagePath": "pages/car/car",
+        "text": "购物车",
+        "iconPath": "/static/tabbar/car.png",
+        "selectedIconPath": "/static/tabbar/cared.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "/static/tabbar/user.png",
+        "selectedIconPath": "/static/tabbar/usered.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

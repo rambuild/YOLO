@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "custom-goods":"../../public/goods/goods",
+    "custom-topbar":"../../public/topbar/topbar"
+  },
+  "navigationStyle":"custom"
+  
+}

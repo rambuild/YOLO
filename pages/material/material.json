@@ -1,0 +1,7 @@
+{
+    "usingComponents":{
+        "custom-topbar":"../../public/topbar/topbar"
+    },
+    "navigationStyle":"custom",
+    "navigationBarTextStyle": "black"
+}
