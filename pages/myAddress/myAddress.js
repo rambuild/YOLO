@@ -14,23 +14,20 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onShow(options) {
+    onShow() {
         let userId = wx.getStorageSync("user").id
-        wx.showLoading()
-          
         wx.http({
             url: "getAddress",
+            loading: true,
             data: {
                 userId,
             },
         }).then((res) => {
-            wx.hideLoading()
             this.setData({
                 userAddress: res.data,
             })
-        }).catch(e=>{
-            wx.hideLoading()
         })
+
     },
     onLoad(options) {
         if (options.action) {
@@ -57,7 +54,7 @@ Page({
     radioChange(e) {
         wx.http({
             url: "setAddress",
-            loading:true,
+            loading: true,
             data: {
                 id: e.detail.value,
                 userId: App.globalData.user.id,
@@ -67,7 +64,7 @@ Page({
             if (res.code == 200) {
                 if (this.data.action == "changeAddr") {
                     wx.navigateBack({
-                        delta: 1
+                        delta:1
                     })
                 } else {
                     wx.showToast({
@@ -85,9 +82,10 @@ Page({
     // 点击地址栏修改默认地址
     selAddr(e) {
         let { index, addr } = e.currentTarget.dataset
+        console.log(addr)
         wx.http({
             url: "setAddress",
-            loading:true,
+            loading: true,
             data: {
                 id: addr.id,
                 userId: App.globalData.user.id,
@@ -97,8 +95,8 @@ Page({
             if (res.code == 200) {
                 // 如果是从订单提交页过来更改地址的就回退过去
                 if (this.data.action == "changeAddr") {
-                    wx.navigateTo({
-                        url:"/pages/order-buy/order-buy"
+                    wx.navigateBack({
+                        delta:1
                     })
                 } else {
                     let userAddress = JSON.parse(JSON.stringify(this.data.userAddress))

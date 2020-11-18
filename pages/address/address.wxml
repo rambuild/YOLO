@@ -9,11 +9,11 @@
       </view>
     </view>
     <view class="addressDetail">
-      <view class="goods">
+      <view class="goods item">
         <input bindblur="phone" type="number" name="phone" placeholder-class="r" value="{{phone}}" placeholder="手机号码" />
       </view>
       <view class="item">
-        <input name="men" placeholder-class="r" value="{{nick}}" placeholder="收货人" />
+        <input name="name" placeholder-class="r" value="{{nick}}" placeholder="收货人" />
       </view>
       <view class="item">
         <picker name="picker" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
@@ -23,7 +23,7 @@
         </picker>
       </view>
       <view class="item">
-        <input name="address" placeholder-class="r" placeholder="详细地址：如道路、门牌号、小区、楼栋号、单元" />
+        <input name="address" placeholder-class="r" value="{{address}}" placeholder="详细地址：如道路、门牌号、小区、楼栋号、单元" />
       </view>
     </view>
   </view>

@@ -1,3 +1,4 @@
+const App = getApp()
 Page({
 	data: {
 		user: {},
@@ -7,7 +8,6 @@ Page({
 	},
 	onLoad(options) {
 		let orderList = JSON.parse(decodeURIComponent(options.orderList))
-		console.log(orderList)
 		// 计算总价
 		let totalPrice = 0
 		orderList.forEach(i => {
@@ -24,15 +24,14 @@ Page({
 		this.getUserAddr()
 	},
 	getUserAddr() {
-		wx.showLoading()
 		wx.http({
 			url: "getAddress",
+			loading:true,
 			data: {
-				userId: this.data.user.id
+				userId: App.globalData.user.id,
 			}
 		})
 			.then(res => {
-				wx.hideLoading()
 				let userDefaultAddr = {}
 				res.data.forEach(i => {
 					if (i.type == 2) {
@@ -42,9 +41,6 @@ Page({
 				this.setData({
 					userDefaultAddr
 				})
-			})
-			.catch(res => {
-				wx.hideLoading()
 			})
 	},
 	confirmPay() {

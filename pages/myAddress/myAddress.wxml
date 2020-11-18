@@ -13,8 +13,8 @@
 				</view>
 				<view class="content" bindtap='selAddr' data-addr='{{item}}' data-index="{{index}}">
 					<view class="basic">
-						<view>{{userAddress[index].nick}}</view>
-						<view>{{userAddress[index].phone}}</view>
+						<view class="name">{{userAddress[index].nick}}</view>
+						<view class="phone">{{userAddress[index].phone}}</view>
 					</view>
 					<view class="addressDetail">地址: {{userAddress[index].address}}</view>
 				</view>
