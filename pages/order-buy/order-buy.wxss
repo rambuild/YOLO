@@ -8,23 +8,23 @@ page{
 .order-address{
     box-sizing: border-box;
     width: 686rpx;
-    height: 214rpx;
-    display: grid;
-    grid-template-columns: 64rpx 388rpx;
-    padding: 30rpx 0 0 50rpx;
+    display: flex;
+    align-items: center;
+    padding: 40rpx 50rpx;
     background-color: white;
-    border-radius: 4rpx;
+    border-radius: 12rpx;
+
 }
 .address-icon{
     display: block;
     width: 32rpx;
     height: 38rpx;
-    margin-right: 32rpx;
-    margin-top: 61rpx;
+    margin-right: 50rpx;
+    /* margin-top: 61rpx; */
 }
 .address-inf>text{
     display: inline-block;
-    font-size: 48rpx;
+    font-size: 40rpx;
     font-weight: Regular;
     margin-right: 16rpx;
 }
@@ -36,12 +36,13 @@ page{
 .address-text{
     word-break: break-all;
     margin-top: 16rpx;
+    font-size: 28rpx;
 }
 .orderinf{
     margin-top: 32rpx;
     background-color: white;
     padding: 32rpx 32rpx 114rpx;
-    border-radius: 4rpx;
+    border-radius: 12rpx;
 }
 .orderinf>.product-inf{
     display: grid;
@@ -103,7 +104,7 @@ page{
     align-items: center;
     width: 268rpx;
     height: 82rpx;
-    border-radius: 4rpx;
+    border-radius: 12rpx;
     margin: 74rpx auto;
     background-color: white;
 }

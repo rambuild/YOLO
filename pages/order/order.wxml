@@ -18,7 +18,7 @@
 								<swiper-item>
 										<scroll-view scroll-y="true" style="height:{{orderHeight?orderHeight+'px':''}}">
 												<!-- 全部 -->
-												<view wx:if="{{currentIndex==0}}" class="qb">
+												<view hidden="{{currentIndex!=0}}" class="qb">
 														<!-- wx:for="{{allOrders}}" :key="{{id}}" -->
 														<view class="item" wx:for="{{allOrders}}" wx:for-item="item1" wx:for-index="index1" wx:key="id" hidden="{{item1.orderInfoList.length==0}}">
 																<view class="item-top" wx:for="{{item1.orderInfoList}}" wx:for-item="item2" wx:for-index="index2" wx:key="id">
@@ -46,14 +46,14 @@
 																</view>
 																<view class="btn">
 																		<view bindtap='delOrder' data-orderid="{{item1.id}}">删除订单</view>
-																		<view>
-																				{{item1.status == 1?"待支付":item1.status == 2?"待发货":item1.status ==3?"待收货":item1.status ==4?"退款中":item1.status==5?"退款完成":item1.status ==6?"待评价":""}}
+																		<view bindtap='payment' data-item="{{item1}}">
+																				{{item1.status == 1?"付款":item1.status == 2?"待发货":item1.status ==3?"待收货":item1.status ==4?"退款中":item1.status==5?"退款完成":item1.status ==6?"待评价":""}}
 																		</view>
 																</view>
 														</view>
 												</view>
 												<!-- 待付款 -->
-												<view wx:if="{{currentIndex==1}}" class="dfk">
+												<view hidden="{{currentIndex!=1}}" class="dfk">
 														<view class="item" wx:for="{{toBePaidList}}" wx:key="id" wx:for-item="item1" wx:for-index="index1" hidden="{{item1.orderInfoList.length == 0}}">
 																<block wx:for="{{item1.orderInfoList}}" wx:key="id" wx:for-item="item2" wx:for-index="index2">
 																		<view class="code">
@@ -63,8 +63,8 @@
 																		<view class="line" style="margin:20rpx 0"></view>
 																		<view class="item-top">
 																				<view class="top-tick">
-																						<view>
-																								<image src="../../static/icon/选中.png"></image>
+																						<view bindtap='selectItem' data-index="{{index1}}">
+																								<image src="{{item1.selected==0?'../../static/icon/未选中.png':'../../static/icon/选中.png'}}"></image>
 																						</view>
 																				</view>
 																				<view class="top-img">
@@ -91,23 +91,26 @@
 																		<view style="font-size:32rpx;opacity:1;color:#000">需付款￥{{item1.price}}</view>
 																</view>
 																<view class="btn">
-																		<view>取消订单</view>
-																		<view>付款</view>
+																		<view bindtap='delOrder' data-orderid="{{item1.id}}" data-action='cancel'>取消订单</view>
+																		<view bindtap='payment' data-item="{{item1}}">付款</view>
 																</view>
 														</view>
-														<view class="bottem">
-																<view class="total">
-																		<view>
-																				<image src="../../static/icon/选中.png"></image>
-																		</view>
-																		<view>合计：￥98</view>
-																</view>
-																<view class="account">合并结算</view>
-														</view>
+														<!-- 合并结算功能 -->
+														<!-- 
+															<view class="bottem">
+																	<view class="total">
+																			<view bindtap='selectAll'>
+																					<image src="{{toBePaidListCheckAll?'../../static/icon/选中.png':'../../static/icon/未选中.png'}}"></image>
+																			</view>
+																			<view>合计：￥{{totalPrice}}</view>
+																	</view>
+																	<view class="account">合并结算</view>
+															</view>
+														-->
 												</view>
 												<!-- 待发货 -->
-												<view wx:if="{{currentIndex==2}}" class="dfh">
-														<view class="item" wx:for="{{toBeDeliveredList}}" wx:key="id" wx:for-item="item1" wx:for-index="index1">
+												<view hidden="{{currentIndex!=2}}" class="dfh">
+														<view class="item" wx:for="{{toBeDeliveredList}}" wx:key="id" wx:for-item="item1" wx:for-index="index1" hidden="{{item1.orderInfoList.length==0}}">
 																<view class="addressData">
 																		<view class="addIcon">
 																				<view>
@@ -156,15 +159,15 @@
 																		<view style="font-size:32rpx;opacity:1;color:#000">需付款￥{{item1.price}}</view>
 																</view>
 																<view class="btn">
-																		<view style=" margin-right: 104rpx;">申请退款</view>
+																		<view style=" margin-right: 104rpx;" bindtap='applyForRefund' data-item="{{item1}}">申请退款</view>
 																		<view style="  background-color: #eee;color:black">提醒发货</view>
 																		<view>联系客服</view>
 																</view>
 														</view>
 												</view>
 												<!-- 待收货 -->
-												<view wx:if="{{currentIndex==3}}" class="dsh">
-														<view class="item" wx:for="{{toBeReceivedList}}" wx:key="id" wx:for-item="item1" wx:for-index="index1">
+												<view hidden="{{currentIndex!=3}}" class="dsh">
+														<view class="item" wx:for="{{toBeReceivedList}}" wx:key="id" wx:for-item="item1" wx:for-index="index1" hidden="{{item1.orderInfoList.length==0}}">
 																<view class="item-top" wx:for="{{item1.orderInfoList}}" wx:key="id" wx:for-item="item2" wx:for-index="index2">
 																		<view class="top-img">
 																				<image src="{{item2.img1}}"></image>
@@ -189,15 +192,15 @@
 																		<view style="font-size:32rpx;opacity:1;color:#000">需付款￥{{item1.price}}</view>
 																</view>
 																<view class="btn">
-																		<view style=" margin-right: 104rpx;">申请退款</view>
+																		<view style=" margin-right: 104rpx;" bindtap='applyForRefund' data-item="{{item1}}">申请退款</view>
 																		<view style="  background-color: #eee;color:black">查看物流</view>
-																		<view>确认收货</view>
+																		<view bindtap="confirmReceive" data-item='{{item1}}'>确认收货</view>
 																</view>
 														</view>
 												</view>
 												<!-- 待评价 -->
-												<view wx:if="{{currentIndex==4}}" class="dpj">
-														<view class="item" wx:for="{{toBeEvaluatedList}}" wx:key="id" wx:for-item="item1" wx:for-index="index1">
+												<view hidden="{{currentIndex!=4}}" class="dpj">
+														<view class="item" wx:for="{{toBeEvaluatedList}}" wx:key="id" wx:for-item="item1" wx:for-index="index1" hidden="{{item1.orderInfoList.length==0}}">
 																<view class="item-top" wx:for="{{item1.orderInfoList}}" wx:key="id" wx:for-item="item2" wx:for-index="index2">
 																		<view class="top-img">
 																				<image src="{{item2.img1}}"></image>
@@ -225,8 +228,8 @@
 														</view>
 												</view>
 												<!-- 退款 -->
-												<view wx:if="{{currentIndex==5}}" class="tk">
-														<view class="item" wx:for="{{refunding}}" wx:key="id" wx:for-item="item1" wx:for-index="index1">
+												<view hidden="{{currentIndex!=5}}" class="tk">
+														<view class="item" wx:for="{{refunding}}" wx:key="id" wx:for-item="item1" wx:for-index="index1" hidden="{{item1.orderInfoList.length==0}}">
 																<view class="item-top" wx:for="{{item1.orderInfoList}}" wx:key="id" wx:for-item="item2" wx:for-index="index2">
 																		<view class="top-img">
 																				<image src="{{item2.img1}}"></image>

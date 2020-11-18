@@ -31,6 +31,14 @@
 	justify-content: space-between;
 	align-items: center;
 }
+.noGoods{
+	width: 100%;
+	height: 100rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 36rpx;
+}
 .tick {
 	width: 116rpx;
 	height: 170rpx;

@@ -31,6 +31,10 @@
 			</view>
 		</view>
 	</block>
+	<view hidden="{{goodsList.length !=0}}" class='noGoods'>
+		没有商品
+	</view>
+	  
 	<view class="bottem">
 		<view class="total">
 			<view bindtap="checkAll">

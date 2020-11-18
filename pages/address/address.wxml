@@ -1,7 +1,7 @@
 <form bindsubmit="formSubmit">
   <view class="address">
     <view class="title">
-      <view>添加地址</view>
+      <view>{{action=='edit'?"编辑":"添加"}}地址</view>
       <view>
         <button plain class="add" formType="submit" size="mini" data-type="2" bindtap="btn">
           保存

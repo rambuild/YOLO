@@ -48,6 +48,9 @@ Page({
         for (let i = 0; i < e.detail.value.picker.length; i++) {
             address += e.detail.value.picker[i]
         }
+        console.log(e)
+        let addrMain = e.detail.value.picker
+        let addrDetail = e.detail.value.address
         address += e.detail.value.address
         this.setData({
             address: address,
@@ -64,6 +67,8 @@ Page({
                     nick: this.data.nick,
                     userId: this.data.userId,
                     type: this.data.type,
+                    addrMain,
+                    addrDetail
                 },
             }).then((res) => {
                 wx.navigateTo({

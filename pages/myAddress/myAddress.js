@@ -16,15 +16,20 @@ Page({
      */
     onShow(options) {
         let userId = wx.getStorageSync("user").id
+        wx.showLoading()
+          
         wx.http({
             url: "getAddress",
             data: {
                 userId,
             },
         }).then((res) => {
+            wx.hideLoading()
             this.setData({
                 userAddress: res.data,
             })
+        }).catch(e=>{
+            wx.hideLoading()
         })
     },
     onLoad(options) {
@@ -52,6 +57,7 @@ Page({
     radioChange(e) {
         wx.http({
             url: "setAddress",
+            loading:true,
             data: {
                 id: e.detail.value,
                 userId: App.globalData.user.id,
@@ -81,6 +87,7 @@ Page({
         let { index, addr } = e.currentTarget.dataset
         wx.http({
             url: "setAddress",
+            loading:true,
             data: {
                 id: addr.id,
                 userId: App.globalData.user.id,
@@ -90,8 +97,8 @@ Page({
             if (res.code == 200) {
                 // 如果是从订单提交页过来更改地址的就回退过去
                 if (this.data.action == "changeAddr") {
-                    wx.navigateBack({
-                        delta: 1
+                    wx.navigateTo({
+                        url:"/pages/order-buy/order-buy"
                     })
                 } else {
                     let userAddress = JSON.parse(JSON.stringify(this.data.userAddress))
