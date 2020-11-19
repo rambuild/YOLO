@@ -1,6 +1,5 @@
 .goodsEvaluate {
   background-color: #eee;
-  height: 100vh;
   box-sizing: border-box;
 }
 .goodsEvaluate .evaluateItem {

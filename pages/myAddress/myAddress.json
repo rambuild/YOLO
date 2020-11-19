@@ -1,6 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "我的地址",
-  "navigationBarBackgroundColor": "#fff"
+	"usingComponents": {},
+	"navigationBarTextStyle": "black",
+	"navigationBarTitleText": "我的地址",
+	"navigationBarBackgroundColor": "#fff"
 }

@@ -43,7 +43,7 @@ Page({
             success: (res) => {
                 if (res.confirm) {
                     // 开始定制
-                    console.log("用户点击确定")
+                    console.log("用户点击直接购买")
                 } else if (res.cancel) {
                     // 直接购买
                     // 选择所有分类才跳转

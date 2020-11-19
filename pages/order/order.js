@@ -85,14 +85,14 @@ Page({
 				toBePaidList = toBePaidList.reverse()
 				toBeDeliveredList = toBeDeliveredList.reverse()
 				toBeReceivedList = toBeReceivedList.reverse()
-				toBeEvaluatedList = toBeEvaluatedList.reverse()
+				evaluateList = evaluateList.reverse()
 				refunding = refunding.reverse()
 				this.setData({
 					allOrders,
 					toBePaidList,
 					toBeDeliveredList,
 					toBeReceivedList,
-					toBeEvaluatedList:evaluateList,
+					toBeEvaluatedList: evaluateList,
 					refunding
 				})
 			} else {
@@ -226,12 +226,12 @@ Page({
 					})
 				}
 			},
-			fail: () => {},
-			complete: () => {}
+			fail: () => { },
+			complete: () => { }
 		})
 	},
 	// 付款
-	payment(e) {
+	allOrderAction(e) {
 		let { item } = e.currentTarget.dataset
 		//状态为1表示待付款状态
 		if (item.status == 1) {
@@ -284,7 +284,10 @@ Page({
 					}
 				}
 			})
+		} else if (item.status == 6) { // 状态6为待评价订单
+			console.log('评价')
 		}
+
 	},
 	// 申请退款
 	applyForRefund(e) {

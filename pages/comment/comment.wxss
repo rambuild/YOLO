@@ -1,1 +1,45 @@
-/* pages/comment/comment.wxss */
+.myComments {
+  background-color: #eee;
+  padding-bottom: 40rpx;
+}
+.myComments .top {
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 25rpx;
+  background-color: #000;
+  color: #fff;
+}
+.myComments .commentsListBox .item {
+  display: flex;
+  justify-content: space-between;
+  margin: 40rpx;
+  margin-bottom: 0;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 12rpx;
+}
+.myComments .commentsListBox .item .imgBox {
+  width: 150rpx;
+  height: 150rpx;
+}
+.myComments .commentsListBox .item .imgBox image {
+  width: 100%;
+  height: 100%;
+}
+.myComments .commentsListBox .item .goodsInfo {
+  flex: 1;
+  padding-left: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.myComments .commentsListBox .item .goodsInfo .goodsTitle {
+  font-size: 32rpx;
+  color: #333;
+}
+.myComments .commentsListBox .item .goodsPrice {
+  display: flex;
+  justify-content: space-between;
+}

@@ -49,6 +49,7 @@
   "isGameTourist": false,
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
+  "appid": "wx1a8f212e543a7948",
   "condition": {
     "plugin": {
       "list": []
@@ -199,6 +200,12 @@
         {
           "name": "pages/goodsEvaluate/goodsEvaluate",
           "pathName": "pages/goodsEvaluate/goodsEvaluate",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/comment/comment",
+          "pathName": "pages/comment/comment",
           "query": "",
           "scene": null
         }

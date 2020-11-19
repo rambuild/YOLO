@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+	"usingComponents": {},
+	"navigationBarTitleText": "我的评价",
+	"navigationBarTextStyle": "black",
+	"navigationBarBackgroundColor": "#fff"
 }

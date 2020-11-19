@@ -65,7 +65,7 @@
 								</view>
 								<view class="btn">
 									<view bindtap='delOrder' data-orderid="{{item1.id}}">删除订单</view>
-									<view bindtap='payment' data-item="{{item1}}">
+									<view bindtap='allOrderAction' data-item="{{item1}}">
 										{{item1.status == 1?"付款":item1.status == 2?"待发货":item1.status ==3?"待收货":item1.status ==4?"退款中":item1.status==5?"退款完成":item1.status ==6?"待评价":""}}
 									</view>
 								</view>
@@ -125,7 +125,7 @@
 								</view>
 								<view class="btn">
 									<view bindtap='delOrder' data-orderid="{{item1.id}}" data-action='cancel'>取消订单</view>
-									<view bindtap='payment' data-item="{{item1}}">付款</view>
+									<view bindtap='allOrderAction' data-item="{{item1}}">付款</view>
 								</view>
 							</view>
 							<!-- 合并结算功能 -->

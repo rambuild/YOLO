@@ -1,6 +1,4 @@
 // pages/myAddress/myAddress.js
-const App = getApp()
-const http = require("../../utils/http.js")
 
 Page({
     /**
@@ -8,7 +6,8 @@ Page({
      */
     data: {
         userAddress: [], //用户的地址信息
-        action: null
+        action: null,
+        userId: null
     },
 
     /**
@@ -16,6 +15,9 @@ Page({
      */
     onShow() {
         let userId = wx.getStorageSync("user").id
+        this.setData({
+            userId
+        })
         wx.http({
             url: "getAddress",
             loading: true,
@@ -57,14 +59,14 @@ Page({
             loading: true,
             data: {
                 id: e.detail.value,
-                userId: App.globalData.user.id,
+                userId: this.data.userId,
                 type: 2,
             },
         }).then((res) => {
             if (res.code == 200) {
                 if (this.data.action == "changeAddr") {
                     wx.navigateBack({
-                        delta:1
+                        delta: 1
                     })
                 } else {
                     wx.showToast({
@@ -87,7 +89,7 @@ Page({
             loading: true,
             data: {
                 id: addr.id,
-                userId: App.globalData.user.id,
+                userId: this.data.userId,
                 type: 2,
             },
         }).then((res) => {
@@ -95,7 +97,7 @@ Page({
                 // 如果是从订单提交页过来更改地址的就回退过去
                 if (this.data.action == "changeAddr") {
                     wx.navigateBack({
-                        delta:1
+                        delta: 1
                     })
                 } else {
                     let userAddress = JSON.parse(JSON.stringify(this.data.userAddress))
@@ -138,7 +140,7 @@ Page({
                         wx.http({
                             url: "getAddress",
                             data: {
-                                userId: App.globalData.user.id,
+                                userId: this.data.userId,
                             },
                         }).then((res) => {
                             console.log(res)
