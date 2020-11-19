@@ -44,64 +44,64 @@ Page({
 		})
 	},
 	getOrders() {
-		wx.showLoading({
-			title: "正在加载"
-		})
 		wx.http({
 			url: "getOrder",
+			loading: true,
 			data: {
 				userId: this.data.userId
 			}
+		}).then(res => {
+			if (res.code == 200) {
+				let allOrders = res.data
+				let toBePaidList = []
+				let toBeDeliveredList = []
+				let toBeReceivedList = []
+				let toBeEvaluatedList = []
+				let refunding = []
+				// 分类各种状态的订单
+				res.data.forEach(i => {
+					if (i.status == 1) {
+						toBePaidList.push(i)
+					} else if (i.status == 2) {
+						toBeDeliveredList.push(i)
+					} else if (i.status == 3) {
+						toBeReceivedList.push(i)
+					} else if (i.status == 6) {
+						toBeEvaluatedList.push(i)
+					} else if (i.status == 4) {
+						refunding.push(i)
+					}
+				})
+				let evaluateList = []
+				toBeEvaluatedList.forEach(i => {
+					if (i.orderInfoList.length > 0) {
+						i.orderInfoList.forEach(j => {
+							evaluateList.push(j)
+						})
+					}
+				})
+				// 数组倒置，使最新的订单前置
+				allOrders = allOrders.reverse()
+				toBePaidList = toBePaidList.reverse()
+				toBeDeliveredList = toBeDeliveredList.reverse()
+				toBeReceivedList = toBeReceivedList.reverse()
+				toBeEvaluatedList = toBeEvaluatedList.reverse()
+				refunding = refunding.reverse()
+				this.setData({
+					allOrders,
+					toBePaidList,
+					toBeDeliveredList,
+					toBeReceivedList,
+					toBeEvaluatedList:evaluateList,
+					refunding
+				})
+			} else {
+				wx.showToast({
+					title: "获取订单信息失败",
+					icon: "none"
+				})
+			}
 		})
-			.then(res => {
-				wx.hideLoading()
-				if (res.code == 200) {
-					let allOrders = res.data
-					let toBePaidList = []
-					let toBeDeliveredList = []
-					let toBeReceivedList = []
-					let toBeEvaluatedList = []
-					let refunding = []
-					// 分类各种状态的订单
-					res.data.forEach(i => {
-						if (i.status == 1) {
-							toBePaidList.push(i)
-						} else if (i.status == 2) {
-							toBeDeliveredList.push(i)
-						} else if (i.status == 3) {
-							toBeReceivedList.push(i)
-						} else if (i.status == 6) {
-							toBeEvaluatedList.push(i)
-						} else if (i.status == 4) {
-							refunding.push(i)
-						}
-					})
-
-					// 数组倒置，使最新的订单前置
-					allOrders = allOrders.reverse()
-					toBePaidList = toBePaidList.reverse()
-					toBeDeliveredList = toBeDeliveredList.reverse()
-					toBeReceivedList = toBeReceivedList.reverse()
-					toBeEvaluatedList = toBeEvaluatedList.reverse()
-					refunding = refunding.reverse()
-					this.setData({
-						allOrders,
-						toBePaidList,
-						toBeDeliveredList,
-						toBeReceivedList,
-						toBeEvaluatedList,
-						refunding
-					})
-				} else {
-					wx.showToast({
-						title: "获取订单信息失败",
-						icon: "none"
-					})
-				}
-			})
-			.catch(e => {
-				wx.hideLoading()
-			})
 	},
 	//内容区域的高度
 	getContentHeight() {
@@ -247,7 +247,39 @@ Page({
 								qgmopenid: this.data.openId,
 								qsum: item.price
 							}
-						}).then(res => {})
+						}).then(res => {
+							if (res.code == 200) {
+								let data = res.data
+								// 调起微信支付
+								wx.requestPayment({
+									nonceStr: data.nonceStr,
+									package: data.package,
+									paySign: data.paySign,
+									timeStamp: data.timeStamp,
+									signType: data.signType,
+									appId: data.prepayId,
+									success: res => {
+										if (res.errMsg == "requestPayment:ok") {
+											this.getOrders()
+											wx.showToast({
+												title: "支付成功"
+											})
+										}
+									},
+									fail: res => {
+										wx.showToast({
+											title: "支付失败",
+											icon: "none"
+										})
+									}
+								})
+							} else {
+								wx.showToast({
+									title: "出错了",
+									icon: "none"
+								})
+							}
+						})
 					} else if (res.cancel) {
 					}
 				}
@@ -304,6 +336,13 @@ Page({
 					})
 				}
 			}
+		})
+	},
+	// 订单评价
+	toEvaluate(e) {
+		let { item } = e.currentTarget.dataset
+		wx.navigateTo({
+			url: `/pages/goodsEvaluate/goodsEvaluate?item=${encodeURIComponent(JSON.stringify(item))}`
 		})
 	}
 })

@@ -27,8 +27,7 @@ Page({
     },
     //订单页
     orderGo(e) {
-        console.log(e)
-        let mark = e.currentTarget.dataset.mark ? e.currentTarget.dataset.mark : 0
+        let mark = e.currentTarget.dataset.mark || 0
         wx.navigateTo({
             url: "/pages/order/order?mark=" + mark,
         })
@@ -41,8 +40,6 @@ Page({
     },
     // 优惠券页
     goToRedPacket() {
-        console.log(1)
-
         wx.navigateTo({
             url: "/pages/redpacket/redpacket",
         })

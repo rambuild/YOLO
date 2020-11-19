@@ -1,0 +1,8 @@
+{
+	"usingComponents": {
+		"rate": "../../public/rateStar/rateStar"
+	},
+	"navigationBarTitleText": "服务评价",
+	"navigationBarTextStyle": "black",
+	"navigationBarBackgroundColor": "#fff"
+}

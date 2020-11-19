@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@vant/weapp": "^1.5.0",
+    "miniprogram-rate": "^1.0.7",
     "miniprogram-sm-crypto": "^0.2.1"
   }
 }

@@ -16,7 +16,8 @@
     "pages/help/help",
     "pages/Invitation/Invitation",
     "pages/Share/Share",
-    "pages/comment/comment"
+    "pages/comment/comment",
+    "pages/goodsEvaluate/goodsEvaluate"
   ],
   "window": {
     "backgroundTextStyle": "light",

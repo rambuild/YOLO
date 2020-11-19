@@ -64,8 +64,10 @@ Page({
         let imgs = JSON.parse(decodeURIComponent(options.imgs))
         let obj = Object.assign({ imgs }, { size: options.size }, { goodsId: options.goodsId })
         console.log(obj.imgs.img1)
-        this.data.fetchOptions = obj
-        this.data.image_src = obj.imgs.img1
+        this.setData({
+            fetchOptions:obj,
+            image_src:obj.imgs.img1
+        })
     },
     handleimage_box_show() {
         this.setData({

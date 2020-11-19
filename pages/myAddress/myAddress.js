@@ -82,7 +82,6 @@ Page({
     // 点击地址栏修改默认地址
     selAddr(e) {
         let { index, addr } = e.currentTarget.dataset
-        console.log(addr)
         wx.http({
             url: "setAddress",
             loading: true,

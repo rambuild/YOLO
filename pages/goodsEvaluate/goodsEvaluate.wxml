@@ -1,0 +1,59 @@
+<!--pages/goodsEvaluate/goodsEvaluate.wxml-->
+<view class='goodsEvaluate'>
+	<view class="evaluateItem">
+		<view class="goodsInfo">
+			<view class="imgBox">
+				<image src="{{evaluateItem.img1}}" mode='aspectFit' />
+			</view>
+			<view class="goodsText">
+				<view class="goodsName">
+					<text>{{evaluateItem.goodsName}}</text>
+				</view>
+				<view class="goodsItemInfo">
+					<text>颜色：{{evaluateItem.color}} 分类：{{evaluateItem.category}} 尺码：{{evaluateItem.size}}</text>
+				</view>
+			</view>
+		</view>
+		<view class="items allEv">
+			<view class="classify">
+				<text>服务评价</text>
+			</view>
+			<rate class="rateComponent" rateObject="all" bind:changeRate='changeRate' />
+		</view>
+		<view class="itemEvaluate">
+			<view class="title">
+				<text>-具体说说看-</text>
+			</view>
+			<view class="items">
+				<view class="classify">
+					<text>服务态度</text>
+				</view>
+				<rate class="rateComponent" rateObject="attitude" bind:changeRate='changeRate' />
+			</view>
+			<view class="items">
+				<view class="classify">
+					<text>宝贝质量</text>
+				</view>
+				<rate class="rateComponent" rateObject="quality" bind:changeRate='changeRate' />
+			</view>
+			<view class="items">
+				<view class="classify">
+					<text>时效性</text>
+				</view>
+				<rate class="rateComponent" rateObject="timeliness" bind:changeRate='changeRate' />
+			</view>
+		</view>
+		<view class="commentArea">
+			<view class="text">
+				<text>-写下你的评价吧-</text>
+			</view>
+			<view class="textArea">
+				<textarea value="{{evaluation}}" bindblur="handleEvaBlur" />
+				</view>
+		</view>
+	</view>
+	<view class="submit">
+		<button bindtap="subComments">提交评价</button>
+	</view>
+</view>
+

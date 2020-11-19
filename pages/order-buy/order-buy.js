@@ -26,22 +26,21 @@ Page({
 	getUserAddr() {
 		wx.http({
 			url: "getAddress",
-			loading:true,
+			loading: true,
 			data: {
-				userId: App.globalData.user.id,
+				userId: App.globalData.user.id
 			}
-		})
-			.then(res => {
-				let userDefaultAddr = {}
-				res.data.forEach(i => {
-					if (i.type == 2) {
-						userDefaultAddr = i
-					}
-				})
-				this.setData({
-					userDefaultAddr
-				})
+		}).then(res => {
+			let userDefaultAddr = {}
+			res.data.forEach(i => {
+				if (i.type == 2) {
+					userDefaultAddr = i
+				}
 			})
+			this.setData({
+				userDefaultAddr
+			})
+		})
 	},
 	confirmPay() {
 		wx.showModal({
@@ -65,7 +64,36 @@ Page({
 									qgmopenid: this.data.user.openId,
 									qsum: this.data.totalPrice
 								}
-							}).then(res => {})
+							}).then(res => {
+								if (res.code == 200) {
+									let data = res.data
+									// 调起微信支付
+									wx.requestPayment({
+										nonceStr: data.nonceStr,
+										package: data.package,
+										paySign: data.paySign,
+										timeStamp: data.timeStamp,
+										signType: data.signType,
+										appId: data.prepayId,
+										success: res => {
+											// 支付成功
+											if (res.errMsg == "requestPayment:ok") {
+												console.log("支付成功")
+												wx.switchTab({
+													url: "/pages/car/car"
+												})
+											}
+										},
+										fail: res => {
+											// 支付失败
+											console.log("支付失败")
+											wx.switchTab({
+												url: "/pages/car/car"
+											})
+										}
+									})
+								}
+							})
 						} else {
 							wx.showToast({
 								title: res.msg,
