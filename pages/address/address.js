@@ -96,6 +96,8 @@ Page({
                     userId: this.data.userId,
                     type: this.data.type,
                     id: this.data.options.id,
+                    addrMain,
+                    addrDetail
                 }
             }).then((res) => {
                 wx.navigateTo({
