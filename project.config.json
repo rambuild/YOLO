@@ -49,7 +49,6 @@
   "isGameTourist": false,
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "appid": "wx1a8f212e543a7948",
   "condition": {
     "plugin": {
       "list": []
@@ -206,6 +205,36 @@
         {
           "name": "pages/comment/comment",
           "pathName": "pages/comment/comment",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/diy/diy",
+          "pathName": "pages/diy/diy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "public/imageCropper/image-cropper",
+          "pathName": "public/imageCropper/image-cropper",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/clothes/clothes",
+          "pathName": "pages/clothes/clothes",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my_message/my_message",
+          "pathName": "pages/my_message/my_message",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/Invitation/Invitation",
+          "pathName": "pages/Invitation/Invitation",
           "query": "",
           "scene": null
         }

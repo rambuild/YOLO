@@ -25,25 +25,41 @@
 		</view>
 		<view class="line" />
 		<view class="process">
-			<view class="item" data-mark="1" bindtap="orderGo">
+			<view
+			 class="item"
+			 data-mark="1"
+			 bindtap="orderGo"
+			>
 				<view>
 					<image src="../../static/icon/待付款.png" />
 				</view>
 				<view>待付款</view>
 			</view>
-			<view class="item" data-mark="2" bindtap="orderGo">
+			<view
+			 class="item"
+			 data-mark="2"
+			 bindtap="orderGo"
+			>
 				<view>
 					<image src="../../static/icon/待发货.png" />
 				</view>
 				<view>待发货</view>
 			</view>
-			<view class="item" data-mark="3" bindtap="orderGo">
+			<view
+			 class="item"
+			 data-mark="3"
+			 bindtap="orderGo"
+			>
 				<view>
 					<image src="../../static/icon/待收货.png" />
 				</view>
 				<view>待收货</view>
 			</view>
-			<view class="item" data-mark="4" bindtap="orderGo">
+			<view
+			 class="item"
+			 data-mark="4"
+			 bindtap="orderGo"
+			>
 				<view>
 					<image src="../../static/icon/待评论.png" />
 				</view>
@@ -95,7 +111,7 @@
 				</view>
 				<view>我的评价</view>
 			</view>
-			<view class="item">
+			<view class="item" bindtap="test">
 				<view>
 					<image src="../../static/icon/service.png" />
 				</view>

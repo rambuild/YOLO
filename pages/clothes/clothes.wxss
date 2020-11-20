@@ -58,12 +58,11 @@
 
 /* 拖拽盒子样式 */
 .drag_box {
-  position: relative;
   position: absolute;
-  width: 522rpx;
-  height: 570rpx;
-  top: 368rpx;
-  left: 106rpx;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   background-color: transparent;
   overflow: hidden;
 }
@@ -91,15 +90,15 @@
 /* 删除按钮 */
 .btn1 {
   position: absolute;
-  top: 342rpx;
+  top: 220rpx;
   left: 80rpx;
 }
 
 /* 旋转按钮 */
 .btn2 {
   position: absolute;
-  top: 342rpx;
-  left: 602rpx;
+  top: 220rpx;
+  left: 600rpx;
 }
 
 /* 镜面翻转按钮 */

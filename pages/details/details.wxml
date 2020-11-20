@@ -12,7 +12,11 @@
 	</view>
 	<view class="choose">
 		<van-collapse value="{{activeNames}}" bind:change="onChange">
-			<van-collapse-item title="选择" name="1" title-class='customClass'>
+			<van-collapse-item
+			 title="选择"
+			 name="1"
+			 title-class='customClass'
+			>
 				<view hidden="{{proSku.length == 0}}">
 					<view class="classification">
 						<view class="category-left">颜色</view>
@@ -98,7 +102,11 @@
 						<view class="">{{item.phone || '******'}}</view>
 					</view>
 					<view class="love-score">
-						<image src="/static/icon/love.png" wx:for="{{item.scoreArr}}" wx:key="index" />
+						<image
+						 src="/static/icon/love.png"
+						 wx:for="{{item.score1}}"
+						 wx:key="index"
+						/>
 					</view>
 				</view>
 				<view class="cont-font">
@@ -113,7 +121,11 @@
 		<view bind:tap='navClothes'>立即定制</view>
 	</view>
 	<!-- 定制完后弹窗 -->
-	<view class="poupe" style="height:{{windowH}}px;" wx:if='{{isAfterDiy}}'>
+	<view
+	 class="poupe"
+	 style="height:{{windowH}}px;"
+	 wx:if='{{isAfterDiy}}'
+	>
 		<view class="mask" />
 		<view class="poupe-cont">
 			<view class="poupe-top">

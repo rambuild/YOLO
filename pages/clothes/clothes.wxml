@@ -1,12 +1,14 @@
 <!--pages/test/test.wxml-->
 <view class="pages_box">
 	<!-- 外层包裹大盒子 -->
+	<canvas style="width:{{canvasWidth}}px; height:{{canvasHeight}}px;" canvas-id="myCanvas" />
+	<image src="{{tempFilePath}}" mode="aspectFit" />
 	<view class="imageBox">
 		<!-- 背景图片 -->
 		<image src="{{image_src}}" class="image_bg" />
 		<view class="image_face image_positive" bindtap="handel_image_positive">正</view>
 		<view class="image_face image_negative" bindtap="handel_image_negative">背</view>
-		<view class="image_make" bindtap='toOrder'>完成</view>
+		<view class="image_make" bindtap='complete'>完成</view>
 		<!-- 可拖拽盒子 -->
 		<view class="drag_box {{image_box_show?'border2':''}}" style="top:{{drag_box_top}}px; left:{{drag_box_left}}px; width:{{drag_box_width}}rpx; height:{{drag_box_heigh}}rpx;  transform: translate({{translateX}}%,{{translateY}}%);">
 			<!-- 里面的印花图片 -->
@@ -18,6 +20,7 @@
 			 style="transform:scale({{activesize}},{{activesize}}) rotate({{img_origin}}deg) rotateY({{image_originY}}deg); top:{{drag_box_image_top}}px; left:{{drag_box_image_left}}px"
 			 bindtouchstart="img_touchstart"
 			 catchtouchmove="img_touchmove"
+			 id='uploadImg'
 			/>
 			<view
 			 bindtap="handlefontshow"
@@ -28,7 +31,11 @@
 			 class="font_box {{font_btn_show?'border1':''}}"
 			>
 				<!-- 文本框退出按钮 -->
-				<view class="font_btn font_btn1" bindtap="handleTextClear" wx:if="{{font_btn_show}}">
+				<view
+				 class="font_btn font_btn1"
+				 bindtap="handleTextClear"
+				 wx:if="{{font_btn_show}}"
+				>
 					<image src="/static/icon/退出.png" />
 				</view>
 				<!-- 文本框旋转按钮 -->
@@ -41,7 +48,11 @@
 					<image src="/static/icon/旋转.png" />
 				</view>
 				<!-- 文本框镜像按钮 -->
-				<view class="font_btn font_btn3" bindtap="handleTextFace" wx:if="{{font_btn_show}}">
+				<view
+				 class="font_btn font_btn3"
+				 bindtap="handleTextFace"
+				 wx:if="{{font_btn_show}}"
+				>
 					<image src="/static/icon/镜像.png" />
 				</view>
 				<!-- 文本框缩放按钮 -->
@@ -54,7 +65,11 @@
 					<image src="/static/icon/缩放.png" />
 				</view>
 				<!-- 渲染文本框的盒子 -->
-				<view wx:if="{{font_view_show}}" class="font_text" style=" color:{{rgb}}; text-align:{{text_align}}; vertical-align:{{vertical_align}}; font-size:{{font_size}}rpx;  transform:rotate({{font_text_origin}}deg) rotateY({{font_text_originY}}deg)">
+				<view
+				 wx:if="{{font_view_show}}"
+				 class="font_text"
+				 style=" color:{{rgb}}; text-align:{{text_align}}; vertical-align:{{vertical_align}}; font-size:{{font_size}}rpx;  transform:rotate({{font_text_origin}}deg) rotateY({{font_text_originY}}deg)"
+				>
 					{{message}}
 				</view>
 				<!-- 文本框 -->
@@ -70,7 +85,11 @@
 			</view>
 		</view>
 		<!-- 删除按钮 -->
-		<view class="btn1 drag_btn" bindtap="handleClose" wx:if="{{image_box_show}}">
+		<view
+		 class="btn1 drag_btn"
+		 bindtap="handleClose"
+		 wx:if="{{image_box_show}}"
+		>
 			<image src="/static/icon/退出.png" />
 		</view>
 		<!-- 旋转按钮 -->
@@ -83,7 +102,11 @@
 			<image src="/static/icon/旋转.png" />
 		</view>
 		<!-- 移动按钮 -->
-		<view class="btn3 drag_btn" bindtap="image_mirror" wx:if="{{image_box_show}}">
+		<view
+		 class="btn3 drag_btn"
+		 bindtap="image_mirror"
+		 wx:if="{{image_box_show}}"
+		>
 			<image src="/static/icon/镜像.png" />
 		</view>
 		<!-- 缩放按钮 -->
@@ -124,7 +147,11 @@
 				<text bindtap="getstyle_font" class="{{index==font_index?'textActive':''}}"
           data-index="{{index}}">{{item}}</text>
 			</block>
-			<scroll-view wx:if="{{text_show}}" class="bar_font" scroll-y>
+			<scroll-view
+			 wx:if="{{text_show}}"
+			 class="bar_font"
+			 scroll-y
+			>
 				<view>(有乐智造) 正楷</view>
 				<view>(有乐智造) 行楷</view>
 				<view>(有乐智造) 微软雅黑</view>
@@ -133,8 +160,16 @@
 				<view>(有乐智造) 微软雅黑</view>
 			</scroll-view>
 			<!-- 颜色 -->
-			<view wx:if="{{color_show}}" style="background:{{rgb}};width:100%;height:100%;" bindtap="toPick" />
-			<color-picker bindchangeColor="pickColor" initColor="{{rgb}}" show="{{pick}}" />
+			<view
+			 wx:if="{{color_show}}"
+			 style="background:{{rgb}};width:100%;height:100%;"
+			 bindtap="toPick"
+			/>
+			<color-picker
+			 bindchangeColor="pickColor"
+			 initColor="{{rgb}}"
+			 show="{{pick}}"
+			/>
 		</view>
 	</view>
 </view>
@@ -156,5 +191,6 @@
 		<image src="{{bar_upload_font}}" />
 		<text>文本</text>
 	</view>
+
 </view>
 

@@ -17,7 +17,8 @@
     "pages/Invitation/Invitation",
     "pages/Share/Share",
     "pages/comment/comment",
-    "pages/goodsEvaluate/goodsEvaluate"
+    "pages/goodsEvaluate/goodsEvaluate",
+    "public/imageCropper/image-cropper"
   ],
   "window": {
     "backgroundTextStyle": "light",

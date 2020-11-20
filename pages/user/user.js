@@ -69,4 +69,9 @@ Page({
             url: "/pages/comment/comment",
         })
     },
+    test(){
+        wx.navigateTo({
+            url:"../../public/cropper/cropper"
+        })
+    }
 })

@@ -192,3 +192,55 @@ page {
 .color {
   color: #9B9B9B;
 }
+.withdrawalBox{
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+.withdrawal{
+  padding: 25rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 300rpx;
+  background-color: #fff;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12rpx;
+}
+.withdrawal .account{
+  width: 100%;
+  height: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.txText{
+  width: 36%;
+}
+.type{
+  height: 33%;
+  display: flex;
+  align-items: center;
+}
+.withdrawal .type{
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: center;
+}
+.withdrawal .btns{
+  display: flex;
+  height: 33%;
+  justify-content: center;
+
+}
+.confirmBtn{
+  background-color: #B03839;
+  color: #fff;
+}

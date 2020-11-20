@@ -1,83 +1,111 @@
 // pages/Invitation/Invitation.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    index:1
-  },
-  pushMoney(option){
-    console.log(option);
-    this.setData({
-      index:option.target.dataset.index
-    })
-  },
-  ShareGo(){
-    wx.navigateTo({
-      url: '/pages/Share/Share',
-    })
-  },
-  getMoney(option){
-    console.log(option);
-    this.setData({
-      index:option.target.dataset.index
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+	data: {
+		index: 1,
+		userId: null,
+		txFlag: false,
+		withdrawal: null,
+		withdrawalName: null
+	},
+	/**
+	 * 生命周期函数--监听页面加载
+	 */
+	onLoad(options) {
+		let userId = wx.getStorageSync("user").id
+		this.setData({
+			userId
+		})
+		this.getDetails()
+		this.getCommission()
+	},
+	/**
+	 * 生命周期函数--监听页面显示
+	 */
+	onShow: function () {},
+	getDetails() {
+		wx.http({
+			url: "getDetails",
+			data: {
+				userId: this.data.userId,
+				type:2
+			}
+		}).then(res => {})
+	},
+	getCommission(){
+		wx.http({
+			url: "getDetails",
+			data: {
+				parentId: this.data.userId,
+				type:1
+			}
+		}).then(res => {})
+	},
+	ShareGo() {
+		wx.navigateTo({
+			url: "/pages/Share/Share"
+		})
+	},
+	switchTab(e) {
+		this.setData({
+			index: e.target.dataset.index
+		})
+	},
+	hideWithdrawBox() {
+		this.setData({
+			txFlag: false
+		})
+	},
+	// 提现
+	withdrawal(){
+		this.setData({
+			txFlag:true
+		})
+	},
+	radioChange(e) {
+		this.setData({
+			withdrawalName: e.detail.value
+		})
+	},
+	inputChange(e) {
+		this.setData({
+			withdrawal: e.detail.value
+		})
+	},
+	cancel() {
+		this.setData({
+			txFlag: false
+		})
+	},
+	formSubmit(e) {
+		let { withdrawal, withdrawalName } = this.data
+		if (withdrawal && withdrawalName) {
+			wx.http({
+				url: "insertDetails",
+				data: {
+					withdrawal,
+					withdrawalName,
+					userId:this.data.userId,
+					type:2
+				}
+			}).then(res => {
+				if(res.code==200){
+					wx.showToast({
+						title:"申请提现成功"
+					})
+					this.setData({
+						txFlag:false,
+						withdrawal:null
+					})
+					this.getDetails()
+				}
+			})
+		}else{
+			wx.showToast({
+				title: '请填写所有的项',
+				icon:"none"
+			});
+		}
+	},
+	// 阻止事件冒泡
+	tx(e) {}
 })

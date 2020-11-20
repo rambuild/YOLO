@@ -5,7 +5,7 @@
 .box_message {
   position: relative;
   width: 750rpx;
-  height:300rpx;
+  padding:40rpx 0;
   background-color: #000;
   border-radius: 0 0 4rpx 4rpx;
 }
@@ -28,7 +28,6 @@
 .box_message_make {
   position: relative;
   width: 686rpx;
-  height: 152rpx;
   margin: auto;
   background-color: #fff;
   border-radius: 4rpx;
@@ -38,6 +37,8 @@
 }
 .icon {
   flex: 1;
+  display: flex;
+  justify-content: center;
 }
 .icon image{
   display: inline-block;
@@ -69,19 +70,18 @@
 .content {
   margin-top: 38rpx;
   width: 750rpx;
-  height: 850rpx;
   background-color: #fff;
   overflow: hidden;
 }
 .item{
   width: 686rpx;
-  height: 276rpx;
   margin: 30rpx auto;
   border: 1rpx solid #ccc;
 }
 .item_title {
   width: 622rpx;
   height: 80rpx;
+  padding:30rpx 0;
   line-height: 80rpx;
   margin: auto;
   display: flex;

@@ -1,40 +1,50 @@
 <!--pages/my_message/my_message.wxml-->
 <view class="box">
-  <!-- 上方功能框-->
-  <view class="box_message">
-    <view class="box_message_list">
-      <view class="messageone">2条未读信息</view>
-      <view class="messagetow">清除未读</view>
-    </view>
-    <view class="box_message_make">
-      <view class="icon" data-show="1" bindtap="logistics">
-        <image src="/static/icon/物流.png" /> <text>交易物流</text>
-      </view>
-      <view class="icon" data-show="2" bindtap="logistics">
+	<!-- 上方功能框-->
+	<view class="box_message">
+		<!-- <view class="box_message_list">
+			<view class="messageone">2条未读信息</view>
+			<view class="messagetow">清除未读</view>
+		</view> -->
+		<view class="box_message_make">
+			<view
+			 class="icon"
+			 data-show="1"
+			 bindtap="logistics"
+			>
+				<view>
+					<image src="/static/icon/物流.png" />
+					<text>交易物流</text>
+				</view>
+			</view>
+			<!-- <view class="icon" data-show="2" bindtap="logistics">
         <image src="/static/icon/消息.png" /><text>评论回复</text>
-      </view>
-    </view>
-    <view wx:if="{{active==1}}" class="active l"></view>
-    <view wx:if="{{active==2}}" class="active r"></view>
-  </view>
-  <!-- 下方信息框 -->
-  <view wx:if="{{active==1}}" class="content">
-    <view class="item">
-      <view class="item_title"><text>您的订单已经发货</text><text>20/09/26</text></view>
-      <view class="item_message">
-        <view class="item_message_image">
-          <image src="/static/images/timg.png"></image>
-        </view>
-        <view class="item_message_text">
-          <view>DIY莱卡棉短T恤</view>
-          <view>品类：落肩T恤</view>
-          <view>颜色分类：xxxxx</view>
-          <view>颜色尺码：2XL</view>
-        </view>
-      </view>
-    </view>
-  </view>
-  <view wx:if="{{active==2}}" class="content">
+      </view> -->
+		</view>
+		<!-- <view wx:if="{{active==1}}" class="active l"></view>
+		<view wx:if="{{active==2}}" class="active r"></view> -->
+	</view>
+	<!-- 下方信息框 -->
+	<view wx:if="{{active==1}}" class="content">
+		<view class="item">
+			<view class="item_title">
+				<text>您的订单已经发货</text>
+				<text>20/09/26</text>
+			</view>
+			<view class="item_message">
+				<view class="item_message_image">
+					<image src="/static/images/timg.png"></image>
+				</view>
+				<view class="item_message_text">
+					<view>DIY莱卡棉短T恤</view>
+					<view>品类：落肩T恤</view>
+					<view>颜色分类：xxxxx</view>
+					<view>颜色尺码：2XL</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- <view wx:if="{{active==2}}" class="content">
     <view class="list">
       <view class="list_image"><image src="/static/images/aaa.jpg"></image></view>
       <view class="list_message"><view>Tomato</view><view>你这件衣服设计的真漂亮</view></view>
@@ -50,5 +60,6 @@
       <view class="list_message"><view>Tomato</view><view>你这件衣服设计的真漂亮</view></view>
       <view class="list_time">09:16</view>
     </view>
-  </view>
+  </view> -->
 </view>
+

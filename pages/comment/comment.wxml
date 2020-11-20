@@ -1,33 +1,34 @@
 <view class="myComments">
-    <view class="top">
-        <text>全部评价</text>
-    </view>
-    <view class="commentsListBox">
-        <view class="item" wx:for="{{commentsList}}">
-            <view class="imgBox">
-                <image src="{{item.img1}}" mode="aspectFit|aspectFill|widthFix" />
-            </view>
-            <view class="goodsInfo">
-                <view class="goodsTop">
-                    <view>
-                        <text class="goodsTitle">{{item.goodsName}}</text>
-                    </view>
-                    <view>
-                        <text>品类：{{item.category}}</text>
-                    </view>
-                    <view>
-                        <text>颜色：{{item.color}} 尺码{{item.size}}</text>
-                    </view>
-                </view>
-                <view class="goodsPrice">
-                    <view>
-                        <text>￥{{item.price}}</text>
-                    </view>
-                    <view>
-                        <text>已好评</text>
-                    </view>
-                </view>
-            </view>
-        </view>
-    </view>
+	<view class="top">
+		<text>全部评价</text>
+	</view>
+	<view class="commentsListBox">
+		<view class="item" wx:for="{{commentsList}}">
+			<view class="imgBox">
+				<image src="{{item.img1}}" mode="aspectFit|aspectFill|widthFix" />
+			</view>
+			<view class="goodsInfo">
+				<view class="goodsTop">
+					<view>
+						<text class="goodsTitle">{{item.goodsName}}</text>
+					</view>
+					<view>
+						<text>品类：{{item.category}}</text>
+					</view>
+					<view>
+						<text>颜色：{{item.color}} 尺码{{item.size}}</text>
+					</view>
+				</view>
+				<view class="goodsPrice">
+					<view>
+						<text>￥{{item.price}}</text>
+					</view>
+					<view>
+						<text>{{item.score1>2?"已好评":"已差评"}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
 </view>
+

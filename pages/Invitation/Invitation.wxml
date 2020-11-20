@@ -1,49 +1,112 @@
 <!--pages/Invitation/Invitation.wxml-->
 <view class="box">
-  <view class="title"><text>分享有礼</text></view>
-  <view>
-    <view class="moneyBox">
-      <view class="moneyBox_one one"><text>当前余额</text><text>全部提现</text></view>
-      <view class="moneyBox_one tow"><text>242260.05</text><text bindtap="ShareGo">我的分享码 ></text></view>
-      <view class="moneyBox_one three"><text>已提佣金：￥6300.53</text><text>累计佣金：￥10600.53</text></view>
-    </view>
-    <view class="money_list">
-      <view class="{{index==1?'active':''}}" data-index="1" bindtap="pushMoney">提成明细</view>
-      <view class="{{index==2?'active':''}}" data-index="2" bindtap="getMoney">提现明细</view>
-    </view>
-    <block wx:if="{{index==1}}">
-      <view class="pushlist">
-        <view class="pushlist_one">
-          <view>提成明细</view>
-          <view>2020-10-23 18:23:46</view>
-        </view>
-        <view>+ 163.52</view>
-      </view>
-    </block>
-    <block wx:if="{{index==2}}">
-      <view class="getlist color">
-        <view class="getlist_one">
-          <view>提现</view>
-          <view>2020-10-23 18:23:46</view>
-        </view>
-        <view class="getlist_tow">审核中</view>
-        <view class="getlist_therr">
-          <view>-1000</view>
-          <view>242260.05</view>
-        </view>
-      </view>
-      <view class="getlist ">
-        <view class="getlist_one">
-          <view>提现</view>
-          <view>2020-10-23 18:23:46</view>
-        </view>
-        <view class="getlist_tow">已提现</view>
-        <view class="getlist_therr">
-          <view>-1000</view>
-          <view>242260.05</view>
-        </view>
-      </view>
-    </block>
+	<view class="title">
+		<text>分享有礼</text>
+	</view>
+	<view>
+		<view class="moneyBox">
+			<view class="moneyBox_one one">
+				<text>当前余额</text>
+				<text bindtap='withdrawal'>全部提现</text>
+			</view>
+			<view class="moneyBox_one tow">
+				<text>242260.05</text>
+				<text bindtap="ShareGo">我的分享码 ></text>
+			</view>
+			<view class="moneyBox_one three">
+				<text>已提佣金：￥6300.53</text>
+				<text>累计佣金：￥10600.53</text>
+			</view>
+		</view>
+		<view class="money_list">
+			<view
+			 class="{{index==1?'active':''}}"
+			 data-index="1"
+			 bindtap="switchTab"
+			>提成明细
+			</view>
+			<view
+			 class="{{index==2?'active':''}}"
+			 data-index="2"
+			 bindtap="switchTab"
+			>提现明细
+			</view>
+		</view>
+		<block wx:if="{{index==1}}">
+			<view class="pushlist">
+				<view class="pushlist_one">
+					<view>提成明细</view>
+					<view>2020-10-23 18:23:46</view>
+				</view>
+				<view>+ 163.52</view>
+			</view>
+		</block>
+		<block wx:if="{{index==2}}">
+			<view class="getlist color">
+				<view class="getlist_one">
+					<view>提现</view>
+					<view>2020-10-23 18:23:46</view>
+				</view>
+				<view class="getlist_tow">审核中</view>
+				<view class="getlist_therr">
+					<view>-1000</view>
+					<view>242260.05</view>
+				</view>
+			</view>
+			<view class="getlist">
+				<view class="getlist_one">
+					<view>提现</view>
+					<view>2020-10-23 18:23:46</view>
+				</view>
+				<view class="getlist_tow">已提现</view>
+				<view class="getlist_therr">
+					<view>-1000</view>
+					<view>242260.05</view>
+				</view>
+			</view>
+		</block>
+	</view>
 
-  </view>
+	<!-- 提现弹出框 -->
+	<form bindsubmit="formSubmit">
+		<view
+		 class="withdrawalBox"
+		 bindtap="hideWithdrawBox"
+		 hidden="{{!txFlag}}"
+		>
+			<view class="withdrawal" catchtap="tx">
+				<view class="account">
+					<view class="txText">
+						<text>提现账号：</text>
+					</view>
+					<view class="inputBox">
+						<input
+						 class="weui-input"
+						 auto-focus
+						 placeholder="输入提现账号"
+						 bindchange="inputChange"
+						 value="{{withdrawal}}"
+						/>
+					</view>
+				</view>
+				<view class="type">
+					<radio-group bindchange="radioChange">
+						<label class="radio">
+							<radio value="支付宝" />
+							支付宝
+						</label>
+						<label class="radio">
+							<radio value="微信" />
+							微信
+						</label>
+					</radio-group>
+				</view>
+				<view class="btns">
+					<button bindtap='cancel'>取消</button>
+					<button class="confirmBtn" form-type="submit">确定</button>
+				</view>
+			</view>
+		</view>
+	</form>
 </view>
+
