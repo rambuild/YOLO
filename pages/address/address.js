@@ -46,8 +46,8 @@ Page({
         })
     },
     // 保存按钮
-    formSubmit(e) {        
-        let { phone,name,address,picker } = e.detail.value
+    formSubmit(e) {
+        let { phone, name, address, picker } = e.detail.value
         console.log(e)
         let fullAddress = ""
         for (let i = 0; i < picker.length; i++) {
@@ -64,6 +64,13 @@ Page({
             })
             return
         }
+        if (name == "" || address == "" || picker.length == 0) {
+            wx.showToast({
+                title: "请完善你的收货信息",
+                icon: "none"
+            })
+            return
+        }
         if (this.data.action == "add") {
             // 添加地址
             wx.http({
@@ -71,19 +78,23 @@ Page({
                 data: {
                     address: fullAddress,
                     phone,
-                    nick:name,
+                    nick: name,
                     userId: this.data.userId,
                     type: this.data.type,
                     addrMain,
                     addrDetail
                 },
             }).then((res) => {
-                wx.navigateTo({
-                    url: "/pages/myAddress/myAddress",
-                })
-                wx.showToast({
-                    title: "添加地址成功"
-                })
+                if (res.code == 200) {
+                    wx.showToast({
+                        title: "添加地址成功"
+                    })
+                    setTimeout(() => {
+                        wx.navigateBack({
+                            delta: 1
+                        })
+                    }, 1500)
+                }
             })
         } else if (this.data.action == "edit") {
             // 编辑地址
@@ -100,12 +111,16 @@ Page({
                     addrDetail
                 }
             }).then((res) => {
-                wx.navigateTo({
-                    url: "/pages/myAddress/myAddress",
-                })
-                wx.showToast({
-                    title: "更改地址成功"
-                })
+                if (res.code == 200) {
+                    wx.showToast({
+                        title: "更改地址成功"
+                    })
+                    setTimeout(() => {
+                        wx.navigateBack({
+                            delta: 1
+                        })
+                    }, 1500)
+                }
             })
         }
     },

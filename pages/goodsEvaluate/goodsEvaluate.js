@@ -87,7 +87,7 @@ Page({
 			})
 		} else {
 			wx.showToast({
-				title: "请填写所有的项",
+				title: "请评价所有的项",
 				icon: "none"
 			})
 		}

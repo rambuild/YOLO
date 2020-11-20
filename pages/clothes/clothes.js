@@ -15,7 +15,7 @@ var twoPoint = {
 Page({
 	data: {
 		center: "center",
-		image_src: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3124325655,3665321436&fm=26&gp=0.jpg", // 背景图片路径
+		image_src: "", // 背景图片路径
 		drag_box_image: "", // 上传图片路径
 		drag_box_top: "", // 拖拽盒子的定位
 		drag_box_left: "",
@@ -62,17 +62,17 @@ Page({
 		//******************* */
 		canvasHeight: null,
 		canvasWidth: null,
-        tempFilePath: null,
-        imgOffsetLeft:0,
-        imgOffsetTop:0
+		tempFilePath: null,
+		imgOffsetLeft: 0,
+		imgOffsetTop: 0
 	},
 	onLoad(options) {
 		let imgs = JSON.parse(decodeURIComponent(options.imgs))
 		let obj = Object.assign({ imgs }, { size: options.size }, { goodsId: options.goodsId })
 		console.log(obj.imgs.img1)
 		this.setData({
-			fetchOptions: obj
-			// image_src: obj.imgs.img1
+			fetchOptions: obj,
+			image_src: obj.imgs.img1
 		})
 	},
 	handleimage_box_show() {
@@ -178,7 +178,7 @@ Page({
 		}
 	},
 	img_touchmove(e) {
-		console.log(e)
+		// console.log(e)
 		if (this.data.image_box_show && e.touches.length < 2) {
 			var img_moveX = e.touches[0].pageX - onePoint.x1
 			var img_moveY = e.touches[0].pageY - onePoint.y1
@@ -489,7 +489,7 @@ Page({
 					canvasHeight: imgH,
 					canvasWidth: imgW
 				})
-				ctx.drawImage(imgPath, 0, 0, imgW, imgH)
+				ctx.drawImage(imgPath, 0, 0, 300, 300)
 
 				wx.getImageInfo({
 					src: this.data.drag_box_image, // 用户上传的图片
@@ -497,26 +497,21 @@ Page({
 						console.log(" 绘制用户上传的图片：", res)
 
 						// 获取图片的原始宽度和高度
-                        let { width, height } = res
-                        
+						let { width, height } = res
+
 						let curWidth = width * this.data.activesize
 						let curHeight = height * this.data.activesize
-						let id = "#uploadImg"
-						// 获取图片距离顶部和左边的距离
-						wx.createSelectorQuery()
-							.select(id)
-							.boundingClientRect(rect => {
-								this.setData({
-                                    imgOffsetLeft:rect.left,
-                                    imgOffsetTop:rect.top
-                                })
-							})
-							.exec()
-						// 图片的相对偏移
-                        // 用户上传的图片
-                        console.log("curWidth",curWidth)
-                        console.log("curHeight",curHeight)
-						ctx.drawImage(res.path, this.data.imgOffsetLeft, this.data.imgOffsetTop, curWidth, curHeight)
+					
+						// 用户上传的图片
+						console.log("curWidth", curWidth)
+						console.log("curHeight", curHeight)
+						console.log("imgOffsetLeft",this.data.imgOffsetLeft)
+						console.log("imgOffsetTop",this.data.imgOffsetTop)
+						let rotateDeg = this.data.img_origin
+						console.log(rotateDeg)
+						// ctx.translate(curWidth/2, curHeight/2)
+						// ctx.rotate(rotateDeg)
+						ctx.drawImage(res.path, 100+this.data.drag_box_image_left, 100+this.data.drag_box_image_top, curWidth, curHeight)
 						ctx.draw()
 					}
 				})

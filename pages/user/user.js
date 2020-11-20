@@ -69,9 +69,7 @@ Page({
             url: "/pages/comment/comment",
         })
     },
-    test(){
-        wx.navigateTo({
-            url:"../../public/cropper/cropper"
-        })
+    handleContact(e){
+        console.log(e)
     }
 })

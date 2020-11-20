@@ -143,3 +143,24 @@
     flex-wrap: wrap;
     margin-top: 62rpx;
 }
+.contact button{
+    background-color: #fff;
+    font-size: 26rpx !important;
+    white-space: nowrap;
+    padding:0 !important;
+    font-weight: normal;
+}
+.serviceImgBox image{
+    width: 50%;
+    height: 40rpx;
+}
+.contactBtn{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100% !important;
+}
+.contactTxt{
+    position: relative;
+    bottom: 15rpx;
+}

@@ -12,9 +12,14 @@ Page({
 		selTapThree: null,
 		selTapFour: null,
 		goodsComment: [],
-		goodsId: null
+		goodsId: null,
+		userId:null,
 	},
 	onLoad(options) {
+		let userId = wx.getStorageSync('user').id
+		this.setData({
+			userId
+		})
 		this.data.goodsId = options.id
 		// 获取商品信息
 		this.getProInf(options.id)
@@ -43,7 +48,7 @@ Page({
 			success: res => {
 				if (res.confirm) {
 					// 开始定制
-					console.log("用户点击直接购买")
+					this.navClothes()
 				} else if (res.cancel) {
 					// 直接购买
 					// 选择所有分类才跳转
@@ -74,8 +79,6 @@ Page({
 						let size = this.data.proSku[this.data.selTapOne].goodsSkuList[this.data.selTapTwo].goodsSkuList[
 							this.data.selTapThree
 						].sizeList[this.data.selTapFour]
-						const app = getApp()
-						let userId = app.globalData.user.id
 						let reqParams = {
 							img1,
 							img2,
@@ -85,7 +88,7 @@ Page({
 							color,
 							category,
 							model,
-							userId,
+							userId:this.data.userId,
 							goodsId: this.data.proInf.id,
 							goodsName: this.data.proInf.goodsName,
 							price: this.data.proInf.price

@@ -315,6 +315,31 @@ Page({
 			}
 		})
 	},
+	// 提醒发货
+	remindDeliver(e) {
+		console.log(e)
+		let { item } = e.currentTarget.dataset
+		wx.http({
+			url: "updateOrder",
+			loading:true,
+			data: {
+				status: item.status,
+				id: item.id
+			}
+		}).then(res => {
+			if(res.code == 200){
+				this.getOrders()
+				wx.showToast({
+					title:"提醒发货成功"
+				})
+			}else{
+				wx.showToast({
+					title:res.msg,
+					icon:"none"
+				})
+			}
+		})
+	},
 	// 确认收货
 	confirmReceive(e) {
 		let { item } = e.currentTarget.dataset

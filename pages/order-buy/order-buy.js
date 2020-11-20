@@ -1,10 +1,10 @@
-const App = getApp()
+
 Page({
 	data: {
 		user: {},
 		orderList: [],
 		userDefaultAddr: {},
-		totalPrice: 0
+		totalPrice: 0,
 	},
 	onLoad(options) {
 		let orderList = JSON.parse(decodeURIComponent(options.orderList))
@@ -28,7 +28,7 @@ Page({
 			url: "getAddress",
 			loading: true,
 			data: {
-				userId: App.globalData.user.id
+				userId: this.data.user.id
 			}
 		}).then(res => {
 			let userDefaultAddr = {}

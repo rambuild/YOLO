@@ -5,7 +5,9 @@ Page({
 		userId: null,
 		txFlag: false,
 		withdrawal: null,
-		withdrawalName: null
+		withdrawalName: null,
+		txDetails: [],//提现明细
+		tcDetails:[] //提成明细
 	},
 	/**
 	 * 生命周期函数--监听页面加载
@@ -15,30 +17,42 @@ Page({
 		this.setData({
 			userId
 		})
-		this.getDetails()
-		this.getCommission()
+		this.getTxDetails()
+		this.getTcDetails()
 	},
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () {},
-	getDetails() {
+	onShow: function () { },
+	getTxDetails() {
 		wx.http({
 			url: "getDetails",
 			data: {
 				userId: this.data.userId,
-				type:2
+				type: 2
 			}
-		}).then(res => {})
+		}).then(res => {
+			if (res.code == 200) {
+				this.setData({
+					txDetails: res.data
+				})
+			}
+		})
 	},
-	getCommission(){
+	getTcDetails(){
 		wx.http({
 			url: "getDetails",
 			data: {
 				parentId: this.data.userId,
-				type:1
+				type: 1
 			}
-		}).then(res => {})
+		}).then(res => {
+			if (res.code == 200) {
+				this.setData({
+					tcDetails: res.data
+				})
+			}
+		})
 	},
 	ShareGo() {
 		wx.navigateTo({
@@ -56,9 +70,9 @@ Page({
 		})
 	},
 	// 提现
-	withdrawal(){
+	withdrawal() {
 		this.setData({
-			txFlag:true
+			txFlag: true
 		})
 	},
 	radioChange(e) {
@@ -84,28 +98,28 @@ Page({
 				data: {
 					withdrawal,
 					withdrawalName,
-					userId:this.data.userId,
-					type:2
+					userId: this.data.userId,
+					type: 2
 				}
 			}).then(res => {
-				if(res.code==200){
+				if (res.code == 200) {
 					wx.showToast({
-						title:"申请提现成功"
+						title: "申请提现成功"
 					})
 					this.setData({
-						txFlag:false,
-						withdrawal:null
+						txFlag: false,
+						withdrawal: null
 					})
 					this.getDetails()
 				}
 			})
-		}else{
+		} else {
 			wx.showToast({
 				title: '请填写所有的项',
-				icon:"none"
+				icon: "none"
 			});
 		}
 	},
 	// 阻止事件冒泡
-	tx(e) {}
+	tx(e) { }
 })

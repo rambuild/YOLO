@@ -1,196 +1,122 @@
-<!--pages/test/test.wxml-->
+<!-- pages/test/test.wxml -->
 <view class="pages_box">
-	<!-- 外层包裹大盒子 -->
-	<canvas style="width:{{canvasWidth}}px; height:{{canvasHeight}}px;" canvas-id="myCanvas" />
-	<image src="{{tempFilePath}}" mode="aspectFit" />
-	<view class="imageBox">
-		<!-- 背景图片 -->
-		<image src="{{image_src}}" class="image_bg" />
-		<view class="image_face image_positive" bindtap="handel_image_positive">正</view>
-		<view class="image_face image_negative" bindtap="handel_image_negative">背</view>
-		<view class="image_make" bindtap='complete'>完成</view>
-		<!-- 可拖拽盒子 -->
-		<view class="drag_box {{image_box_show?'border2':''}}" style="top:{{drag_box_top}}px; left:{{drag_box_left}}px; width:{{drag_box_width}}rpx; height:{{drag_box_heigh}}rpx;  transform: translate({{translateX}}%,{{translateY}}%);">
-			<!-- 里面的印花图片 -->
-			<image
-			 wx:if="{{image}}"
-			 bindtap="handleimage_box_show"
-			 src="{{drag_box_image}}"
-			 class="drag_box_image"
-			 style="transform:scale({{activesize}},{{activesize}}) rotate({{img_origin}}deg) rotateY({{image_originY}}deg); top:{{drag_box_image_top}}px; left:{{drag_box_image_left}}px"
-			 bindtouchstart="img_touchstart"
-			 catchtouchmove="img_touchmove"
-			 id='uploadImg'
-			/>
-			<view
-			 bindtap="handlefontshow"
-			 bindtouchstart="text_box_touchstart"
-			 catchtouchmove="text_box_touchmove"
-			 wx:if="{{font_box_show}}"
-			 style="top:{{font_box_top}}px; left:{{font_box_left}}px;  transform:scale({{textSize}},{{textSize}});  "
-			 class="font_box {{font_btn_show?'border1':''}}"
-			>
-				<!-- 文本框退出按钮 -->
-				<view
-				 class="font_btn font_btn1"
-				 bindtap="handleTextClear"
-				 wx:if="{{font_btn_show}}"
-				>
-					<image src="/static/icon/退出.png" />
+		<!-- 外层包裹大盒子 -->
+		<view class="control">
+				<view class="image_face image_positive" bindtap="handel_image_positive">正</view>
+				<view class="image_face image_negative" bindtap="handel_image_negative">背</view>
+		</view>
+		<view class="imageBox">
+				<!-- 背景图片 -->
+				<image src="{{image_src}}" class="image_bg" />
+				<view class="image_make" bindtap='complete'>完成</view>
+				<!-- 可拖拽盒子 -->
+				<view class="drag_box {{image_box_show?'border2':''}}" style="top:{{drag_box_top}}px; left:{{drag_box_left}}px; width:{{drag_box_width}}rpx; height:{{drag_box_heigh}}rpx;  transform: translate({{translateX}}%,{{translateY}}%);">
+						<!-- 里面的印花图片 -->
+						<image wx:if="{{image}}" bindtap="handleimage_box_show" src="{{drag_box_image}}" class="drag_box_image" style="transform:scale({{activesize}},{{activesize}}) rotate({{img_origin}}deg) rotateY({{image_originY}}deg); top:{{drag_box_image_top}}px; left:{{drag_box_image_left}}px" bindtouchstart="img_touchstart" catchtouchmove="img_touchmove" id='uploadImg' />
+						<view bindtap="handlefontshow" bindtouchstart="text_box_touchstart" catchtouchmove="text_box_touchmove" wx:if="{{font_box_show}}" style="top:{{font_box_top}}px; left:{{font_box_left}}px;  transform:scale({{textSize}},{{textSize}});  " class="font_box {{font_btn_show?'border1':''}}">
+								<!-- 文本框退出按钮 -->
+								<view class="font_btn font_btn1" bindtap="handleTextClear" wx:if="{{font_btn_show}}">
+										<image src="/static/icon/退出.png" />
+								</view>
+								<!-- 文本框旋转按钮 -->
+								<view class="font_btn font_btn2" catchtouchstart="text_touchoriginstart" catchtouchmove="text_touchorigin" wx:if="{{font_btn_show}}">
+										<image src="/static/icon/旋转.png" />
+								</view>
+								<!-- 文本框镜像按钮 -->
+								<view class="font_btn font_btn3" bindtap="handleTextFace" wx:if="{{font_btn_show}}">
+										<image src="/static/icon/镜像.png" />
+								</view>
+								<!-- 文本框缩放按钮 -->
+								<view class="font_btn font_btn4" catchtouchstart="handleTextSize1" catchtouchmove="handleTextSize2" wx:if="{{font_btn_show}}">
+										<image src="/static/icon/缩放.png" />
+								</view>
+								<!-- 渲染文本框的盒子 -->
+								<view wx:if="{{font_view_show}}" class="font_text" style=" color:{{rgb}}; text-align:{{text_align}}; vertical-align:{{vertical_align}}; font-size:{{font_size}}rpx;  transform:rotate({{font_text_origin}}deg) rotateY({{font_text_originY}}deg)">
+										{{message}}
+								</view>
+								<!-- 文本框 -->
+								<input wx:if="{{font_text_show}}" bindinput="bindinput" focus="{{font_text_show}}" bindfocus="bindfocus" value="{{message}}" class="font_text" style="color:{{rgb}}; text-align: {{center}}; font-size:{{font_size}}rpx; transform:rotate({{font_text_origin}}deg) rotateY({{font_text_originY}}deg)" />
+						</view>
+						<!-- 删除按钮 -->
+						<view class="delBtn drag_btn" bindtap="handleClose" wx:if="{{image_box_show}}">
+								<image src="/static/icon/退出.png" />
+						</view>
+						<!-- 旋转按钮 -->
+						<view class="rotateBtn drag_btn" catchtouchstart="img_touchoriginstart" catchtouchmove="img_touchorigin" wx:if="{{image_box_show}}">
+								<image src="/static/icon/旋转.png" />
+						</view>
+						<!-- 镜像按钮 -->
+						<view class="mirrorBtn drag_btn" bindtap="image_mirror" wx:if="{{image_box_show}}">
+								<image src="/static/icon/镜像.png" />
+						</view>
+						<!-- 缩放按钮 -->
+						<view class="scaleBtn drag_btn" catchtouchstart="img_touchSizeUpStart" catchtouchmove="img_touchSizeDownmove" wx:if="{{image_box_show}}">
+								<image src="/static/icon/缩放.png" />
+						</view>
 				</view>
-				<!-- 文本框旋转按钮 -->
-				<view
-				 class="font_btn font_btn2"
-				 catchtouchstart="text_touchoriginstart"
-				 catchtouchmove="text_touchorigin"
-				 wx:if="{{font_btn_show}}"
-				>
-					<image src="/static/icon/旋转.png" />
+		</view>
+		<canvas style="width:{{canvasWidth}}px; height:{{canvasHeight}}px;" canvas-id="myCanvas" />
+		<image src="{{tempFilePath}}" mode="aspectFit" />
+		<!-- 下方导航栏模块 -->
+		<view class="bar_indexBox" hidden="{{true}}">
+				<!-- 传图 -->
+				<view class="bar_index" wx:if="{{style_chuantu}}" />
+				<!-- 模板 -->
+				<view wx:if="{{style_moban}}" class="bar_index">
+						<block wx:for="{{moban_block}}" wx:key="index">
+								<text bindtap="getstyle_moban" data-index="{{index}}" class="{{index==moban_index?'textActive':''}}">
+										{{item}}
+								</text>
+						</block>
+						<view>里面放置图片</view>
 				</view>
-				<!-- 文本框镜像按钮 -->
-				<view
-				 class="font_btn font_btn3"
-				 bindtap="handleTextFace"
-				 wx:if="{{font_btn_show}}"
-				>
-					<image src="/static/icon/镜像.png" />
+				<!-- 素材 -->
+				<view wx:if="{{style_cdr}}" class="bar_index">
+						<block wx:for="{{bar_block}}" wx:key="index">
+								<text bindtap="getstyle_cdr" data-index="{{index}}" class="{{index==bar_index?'textActive':''}}">
+										{{item}}
+								</text>
+						</block>
+						<view>里面放置图片</view>
+						-->
 				</view>
-				<!-- 文本框缩放按钮 -->
-				<view
-				 class="font_btn font_btn4"
-				 catchtouchstart="handleTextSize1"
-				 catchtouchmove="handleTextSize2"
-				 wx:if="{{font_btn_show}}"
-				>
-					<image src="/static/icon/缩放.png" />
+				<!-- 文本 -->
+				<view wx:if="{{style_font}}" class="bar_index ">
+						<block wx:for="{{font_block}}" wx:key="index">
+								<text bindtap="getstyle_font" class="{{index==font_index?'textActive':''}}" data-index="{{index}}">
+										{{item}}
+								</text>
+						</block>
+						<scroll-view wx:if="{{text_show}}" class="bar_font" scroll-y>
+								<view>(有乐智造) 正楷</view>
+								<view>(有乐智造) 行楷</view>
+								<view>(有乐智造) 微软雅黑</view>
+								<view>(有乐智造) 正楷</view>
+								<view>(有乐智造) 行楷</view>
+								<view>(有乐智造) 微软雅黑</view>
+						</scroll-view>
+						<!-- 颜色 -->
+						<view wx:if="{{color_show}}" style="background:{{rgb}};width:100%;height:100%;" bindtap="toPick" />
+						<color-picker bindchangeColor="pickColor" initColor="{{rgb}}" show="{{pick}}" />
 				</view>
-				<!-- 渲染文本框的盒子 -->
-				<view
-				 wx:if="{{font_view_show}}"
-				 class="font_text"
-				 style=" color:{{rgb}}; text-align:{{text_align}}; vertical-align:{{vertical_align}}; font-size:{{font_size}}rpx;  transform:rotate({{font_text_origin}}deg) rotateY({{font_text_originY}}deg)"
-				>
-					{{message}}
-				</view>
-				<!-- 文本框 -->
-				<input
-				 wx:if="{{font_text_show}}"
-				 bindinput="bindinput"
-				 focus="{{font_text_show}}"
-				 bindfocus="bindfocus"
-				 value="{{message}}"
-				 class="font_text"
-				 style="color:{{rgb}}; text-align: {{center}}; font-size:{{font_size}}rpx; transform:rotate({{font_text_origin}}deg) rotateY({{font_text_originY}}deg)"
-				/>
-			</view>
 		</view>
-		<!-- 删除按钮 -->
-		<view
-		 class="btn1 drag_btn"
-		 bindtap="handleClose"
-		 wx:if="{{image_box_show}}"
-		>
-			<image src="/static/icon/退出.png" />
-		</view>
-		<!-- 旋转按钮 -->
-		<view
-		 class="btn2 drag_btn"
-		 catchtouchstart="img_touchoriginstart"
-		 catchtouchmove="img_touchorigin"
-		 wx:if="{{image_box_show}}"
-		>
-			<image src="/static/icon/旋转.png" />
-		</view>
-		<!-- 移动按钮 -->
-		<view
-		 class="btn3 drag_btn"
-		 bindtap="image_mirror"
-		 wx:if="{{image_box_show}}"
-		>
-			<image src="/static/icon/镜像.png" />
-		</view>
-		<!-- 缩放按钮 -->
-		<view
-		 class="btn4 drag_btn"
-		 catchtouchstart="img_touchSizeUpStart"
-		 catchtouchmove="img_touchSizeDownmove"
-		 wx:if="{{image_box_show}}"
-		>
-			<image src="/static/icon/缩放.png" />
-		</view>
-	</view>
-	<!-- 下方导航栏模块 -->
-	<view>
-		<!-- 传图 -->
-		<view class="bar_index" wx:if="{{style_chuantu}}" />
-		<!-- 模板 -->
-		<view wx:if="{{style_moban}}" class="bar_index">
-			<block wx:for="{{moban_block}}" wx:key="index">
-				<text bindtap="getstyle_moban" data-index="{{index}}"
-          class="{{index==moban_index?'textActive':''}}">{{item}}</text>
-			</block>
-			<view>
-				里面放置图片
-			</view>
-		</view>
-		<!-- 素材 -->
-		<view wx:if="{{style_cdr}}" class="bar_index">
-			<block wx:for="{{bar_block}}" wx:key="index">
-				<text bindtap="getstyle_cdr" data-index="{{index}}" class="{{index==bar_index?'textActive':''}}">{{item}}</text>
-			</block>
-			<view>里面放置图片</view>
-			-->
-		</view>
-		<!-- 文本 -->
-		<view wx:if="{{style_font}}" class="bar_index ">
-			<block wx:for="{{font_block}}" wx:key="index">
-				<text bindtap="getstyle_font" class="{{index==font_index?'textActive':''}}"
-          data-index="{{index}}">{{item}}</text>
-			</block>
-			<scroll-view
-			 wx:if="{{text_show}}"
-			 class="bar_font"
-			 scroll-y
-			>
-				<view>(有乐智造) 正楷</view>
-				<view>(有乐智造) 行楷</view>
-				<view>(有乐智造) 微软雅黑</view>
-				<view>(有乐智造) 正楷</view>
-				<view>(有乐智造) 行楷</view>
-				<view>(有乐智造) 微软雅黑</view>
-			</scroll-view>
-			<!-- 颜色 -->
-			<view
-			 wx:if="{{color_show}}"
-			 style="background:{{rgb}};width:100%;height:100%;"
-			 bindtap="toPick"
-			/>
-			<color-picker
-			 bindchangeColor="pickColor"
-			 initColor="{{rgb}}"
-			 show="{{pick}}"
-			/>
-		</view>
-	</view>
 </view>
 <view class="bar">
-	<!-- 上传图片 -->
-	<view bindtap="handleuploadimages">
-		<image src="{{bar_upload_image}}" />
-		<text>传图</text>
-	</view>
-	<view bindtap="handle_moban">
-		<image src="{{bar_upload_moban}}" />
-		<text>模板</text>
-	</view>
-	<view bindtap="handle_cdr">
-		<image src="{{bar_upload_cdr}}" />
-		<text>素材</text>
-	</view>
-	<view bindtap="handle_font">
-		<image src="{{bar_upload_font}}" />
-		<text>文本</text>
-	</view>
-
+		<!-- 上传图片 -->
+		<view bindtap="handleuploadimages">
+				<image src="{{bar_upload_image}}" />
+				<text>传图</text>
+		</view>
+		<view bindtap="handle_moban">
+				<image src="{{bar_upload_moban}}" />
+				<text>模板</text>
+		</view>
+		<view bindtap="handle_cdr">
+				<image src="{{bar_upload_cdr}}" />
+				<text>素材</text>
+		</view>
+		<view bindtap="handle_font">
+				<image src="{{bar_upload_font}}" />
+				<text>文本</text>
+		</view>
 </view>
-

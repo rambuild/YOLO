@@ -18,13 +18,13 @@
 			>
 				<view
 				 class="item"
-				 wx:for='{{levelTwo[levelOneTab]}}'
+				 wx:for='{{levelTwo[levelOneTabIndex]}}'
 				 wx:key='index'
-				 bindtap="levelTwotap"
+				 bindtap="clickTwotap"
 				 data-tab='{{index}}'
 				>
 					{{item.goodsTypeName}}
-					<view class="line" wx:if='{{levelTwoTab==index}}' />
+					<view class="line" wx:if='{{levelTwoTabIndex==index}}' />
 				</view>
 			</scroll-view>
 		</view>
@@ -40,12 +40,12 @@
 				 class="itembox"
 				 wx:for='{{levelOne}}'
 				 wx:key='index'
-				 bind:tap="levelOnetap"
+				 bind:tap="clickOnetap"
 				 data-tab='{{index}}'
 				>
 					<view class="item">
 						{{item.goodsTypeName}}
-						<view class="line" wx:if='{{levelOneTab==index}}' />
+						<view class="line" wx:if='{{levelOneTabIndex==index}}' />
 					</view>
 				</view>
 			</scroll-view>

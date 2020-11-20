@@ -1,24 +1,25 @@
 // pages/diy/diy.js
 Page({
     data: {
-        levelOneTab: 0,
-        levelTwoTab: 0,
+        levelOneTabIndex: 0,
+        levelTwoTabIndex: 0,
         levelOne: [],
         levelTwo: [],
         product: [],
         page: 0, //页数
         limit: 10, //每页条数
     },
-
-    onLoad: function (options) {
-        this.getsysInfo()
+    onLoad() {
+        this.getSysInfo()
+    },
+    onShow() {
         //一级分类
-        ;(async () => {
-            await this.getList(1)
-            this.getListChild(this.data.levelOne[0].id, 0)
+        (async () => {
+            await this.getCategory()
+            this.getCategoryById(this.data.levelOne[0].id, 0)
         })()
     },
-    getsysInfo() {
+    getSysInfo() {
         let systemInfo = wx.getSystemInfoSync()
         let menuButton = wx.getMenuButtonBoundingClientRect()
         this.setData({
@@ -32,47 +33,45 @@ Page({
             url: "../details/details?id=" + id,
         })
     },
-    getList(status) {
-        return new Promise((resolve, reject) => {
-            wx.http({
-                url: "getCategory",
-                data: {
-                    status,
-                },
-            })
-                .then((res) => {
-                    let levelOne = res.data
-                    let levelTwo = new Array(parseInt(levelOne.length))
+    getCategory() {
+        wx.http({
+            url: "getCategory",
+            data: {
+                status: 1,
+            },
+        })
+            .then((res) => {
+                if (res.code == 200 && res.data.length > 0) {
+                    let levelTwo = new Array(parseInt(res.data.length))
+                    this.getCategoryById(res.data[0].id, 0)
                     this.setData({
-                        levelOne,
+                        levelOne: res.data,
                         levelTwo,
                     })
-                    resolve()
-                })
-                .catch((res) => {
-                    reject()
-                })
+                }
+            })
+
+    },
+    getCategoryById(categoryId, index) {
+        wx.http({
+            url: "getCategoryById",
+            data: {
+                categoryId,
+            },
+        }).then((res) => {
+            this.data.levelTwo[index] = res.data
+            //获取商品
+            if (res.data.length > 0) {
+                this.getGoodsByCategory(res.data[0].id)
+            }
+            this.setData({
+                levelTwo: this.data.levelTwo,
+            })
         })
     },
-    getListChild(categoryId, index) {
-        if (!this.data.levelTwo[index]) {
-            wx.http({
-                url: "getCategoryById",
-                data: {
-                    categoryId,
-                },
-            }).then((res) => {
-                this.data.levelTwo[index] = res.data
-                //获取商品
-                this.getProduct(res.data[0].id)
-                this.setData({
-                    levelTwo: this.data.levelTwo,
-                })
-            })
-        }
-    },
-    getProduct(id) {
+    getGoodsByCategory(id) {
         wx.http({
+            loading: true,
             url: "getGoodsByCategory",
             data: {
                 id,
@@ -86,18 +85,20 @@ Page({
             })
         })
     },
-    levelOnetap(e) {
+    clickOnetap(e) {
         let index = e.currentTarget.dataset.tab
-        this.getListChild(this.data.levelOne[index].id, index)
+        this.getCategoryById(this.data.levelOne[index].id, index)
         this.setData({
-            levelOneTab: index,
+            levelOneTabIndex: index,
         })
     },
-    levelTwotap(e) {
+    clickTwotap(e) {
         let index = e.currentTarget.dataset.tab
-        console.log(e.currentTarget.dataset)
-        // console.log(this.data.levelTwo[0][index].id)
-        this.getListChild(this.data.levelTwo[index].id, index)
+        let { levelTwo, levelOneTabIndex } = this.data
+        this.setData({
+            levelTwoTabIndex: index
+        })
+        this.getGoodsByCategory(levelTwo[levelOneTabIndex][index].id, index)
         this.setData({
             // levelOneTab: index,
         })

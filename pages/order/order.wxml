@@ -205,7 +205,7 @@
 								</view>
 								<view class="btn">
 									<view style=" margin-right: 104rpx;" bindtap='applyForRefund' data-item="{{item1}}">申请退款</view>
-									<view style="  background-color: #eee;color:black">提醒发货</view>
+									<view style="  background-color: #eee;color:black" bindtap='remindDeliver' data-item="{{item1}}">提醒发货</view>
 									<view>联系客服</view>
 								</view>
 							</view>
