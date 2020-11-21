@@ -46,6 +46,7 @@ page {
 
 .index > .header > .cont {
     text-align: center;
+    color: #fff;
 }
 
 .index > .header > .cont > .h1 {
@@ -72,7 +73,7 @@ page {
     width: 206rpx;
     height: 68rpx;
     margin: 48rpx auto 0;
-    border: 1px solid #000;
+    border: 1px solid #fff;
 }
 
 .index > .week {

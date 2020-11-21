@@ -4,6 +4,7 @@ page {
 }
 .box {
   width: 750rpx;
+  padding-bottom: 40rpx;
 }
 .titleone {
   width: 100%;
@@ -26,6 +27,8 @@ page {
   margin-top: 20rpx;
   width: 326rpx;
   height: 420rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
 }
 .myPhoto_item view:nth-child(1) {
   width: 326rpx;

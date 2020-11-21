@@ -13,7 +13,7 @@
 				<view class="drag_box {{image_box_show?'border2':''}}" style="top:{{drag_box_top}}px; left:{{drag_box_left}}px; width:{{drag_box_width}}rpx; height:{{drag_box_heigh}}rpx;  transform: translate({{translateX}}%,{{translateY}}%);">
 						<!-- 里面的印花图片 -->
 						<image wx:if="{{image}}" bindtap="handleimage_box_show" src="{{drag_box_image}}" class="drag_box_image" style="transform:scale({{activesize}},{{activesize}}) rotate({{img_origin}}deg) rotateY({{image_originY}}deg); top:{{drag_box_image_top}}px; left:{{drag_box_image_left}}px" bindtouchstart="img_touchstart" catchtouchmove="img_touchmove" id='uploadImg' />
-						<view bindtap="handlefontshow" bindtouchstart="text_box_touchstart" catchtouchmove="text_box_touchmove" wx:if="{{font_box_show}}" style="top:{{font_box_top}}px; left:{{font_box_left}}px;  transform:scale({{textSize}},{{textSize}});  " class="font_box {{font_btn_show?'border1':''}}">
+						<view bindtap="handlefontshow" bindtouchstart="text_box_touchstart" catchtouchmove="text_box_touchmove" hidden="{{!font_box_show}}" style="top:{{font_box_top}}px; left:{{font_box_left}}px;  transform:scale({{textSize}},{{textSize}});  " class="font_box {{font_btn_show?'border1':''}}">
 								<!-- 文本框退出按钮 -->
 								<view class="font_btn font_btn1" bindtap="handleTextClear" wx:if="{{font_btn_show}}">
 										<image src="/static/icon/退出.png" />
@@ -55,8 +55,7 @@
 						</view>
 				</view>
 		</view>
-		<canvas style="width:{{canvasWidth}}px; height:{{canvasHeight}}px;" canvas-id="myCanvas" />
-		<image src="{{tempFilePath}}" mode="aspectFit" />
+		<canvas style="width:{{300}}px; height:{{300}}px;" canvas-id="myCanvas" />
 		<!-- 下方导航栏模块 -->
 		<view class="bar_indexBox" hidden="{{true}}">
 				<!-- 传图 -->

@@ -1,6 +1,6 @@
 <view class="orderbuy">
-    <view class="order-address" bindtap='selAddr'>
-        <image class="address-icon" src="/static/icon/address.png" ></image>
+    <view class="order-address" bindtap='selAddr' hidden="{{!addrFlag}}">
+        <image class="address-icon" src="/static/icon/address.png"></image>
         <view class='addr'>
             <view class="address-inf">
                 <text>{{userDefaultAddr.nick}}</text>
@@ -9,22 +9,26 @@
             <view class="address-text">地址：{{userDefaultAddr.address}}</view>
         </view>
     </view>
+    <view class="noAddr" bindtap='toAddAddr' hidden="{{addrFlag}}">
+        还没有地址，去添加一个
+    </view>      
     <view class="orderinf">
         <view class="product-inf order-bm" wx:for="{{orderList}}" wx:key="id">
-            <image class="" src="{{item.img1}}" ></image>
+            <image class="" src="{{item.img1}}"></image>
             <view>
-                <view class="text-font-size product-title"><text class="w70">{{item.goodsName}}</text><text class="text-right w30">￥{{item.price}}</text></view>
+                <view class="text-font-size product-title">
+                    <text class="w70">{{item.goodsName}}</text>
+                    <text class="text-right w30">￥{{item.price}}</text>
+                </view>
                 <view class="text-right text-small-color margin-x">x{{item.num}}</view>
                 <view class="text-small-color">颜色分类：{{item.size}}</view>
                 <view class="text-small-color">发货时间：付款后48小时内</view>
             </view>
         </view>
-        <!-- 
-          <view class="order-bm order-row text-font-size">
+        <!-- <view class="order-bm order-row text-font-size">
               <text class="w50">优惠减免：￥20</text>
               <text class="text-right w50 text-small-color">单体优惠券</text>
-          </view>
-        -->
+          </view> -->
         <view class="order-bm order-row text-font-size">
             <text class="w50">配送金额：￥0</text>
             <text class="text-right w50 text-small-color">(满60包邮)</text>

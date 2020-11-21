@@ -15,8 +15,7 @@ Page({
     onShow() {
         //一级分类
         (async () => {
-            await this.getCategory()
-            this.getCategoryById(this.data.levelOne[0].id, 0)
+            await this.getCategory()            
         })()
     },
     getSysInfo() {
@@ -43,11 +42,11 @@ Page({
             .then((res) => {
                 if (res.code == 200 && res.data.length > 0) {
                     let levelTwo = new Array(parseInt(res.data.length))
-                    this.getCategoryById(res.data[0].id, 0)
                     this.setData({
                         levelOne: res.data,
                         levelTwo,
                     })
+                    this.getCategoryById(this.data.levelOne[this.data.levelOneTabIndex].id, this.data.levelOneTabIndex)
                 }
             })
 

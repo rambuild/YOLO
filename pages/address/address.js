@@ -75,6 +75,7 @@ Page({
             // 添加地址
             wx.http({
                 url: "insertAddress",
+                loading:true,
                 data: {
                     address: fullAddress,
                     phone,
@@ -100,6 +101,7 @@ Page({
             // 编辑地址
             wx.http({
                 url: "updateAddress",
+                loading:true,
                 data: {
                     address: fullAddress,
                     phone,

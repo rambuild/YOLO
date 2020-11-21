@@ -2,64 +2,16 @@
 <view class="box">
   <view class="titleone">我的作品</view>
   <view class="myPhoto">
-    <view class="myPhoto_item">
+    <view class="myPhoto_item" wx:for="{{productionList}}">
       <view>
-        <image src="/static/images/indexbg.png"></image>
+        <image src="{{item.img1}}"></image>
       </view>
-      <view>潮牌棉质男装定制</view>
+      <view>{{item.goodsName}}</view>
       <view>
         <view>
           <image src="/static/icon/定制未选中@2x.png"></image>
         </view>
-        <view>2020/09/01</view>
-      </view>
-    </view>
-    <view class="myPhoto_item">
-      <view>
-        <image src="/static/images/indexbg.png"></image>
-      </view>
-      <view>潮牌棉质男装定制</view>
-      <view>
-        <view>
-          <image src="/static/icon/定制未选中@2x.png"></image>
-        </view>
-        <view>2020/09/01</view>
-      </view>
-    </view>
-    <view class="myPhoto_item">
-      <view>
-        <image src="/static/images/indexbg.png"></image>
-      </view>
-      <view>潮牌棉质男装定制</view>
-      <view>
-        <view>
-          <image src="/static/icon/定制未选中@2x.png"></image>
-        </view>
-        <view>2020/09/01</view>
-      </view>
-    </view>
-    <view class="myPhoto_item">
-      <view>
-        <image src="/static/images/indexbg.png"></image>
-      </view>
-      <view>潮牌棉质男装定制</view>
-      <view>
-        <view>
-          <image src="/static/icon/定制未选中@2x.png"></image>
-        </view>
-        <view>2020/09/01</view>
-      </view>
-    </view>
-    <view class="myPhoto_item">
-      <view>
-        <image src="/static/images/indexbg.png"></image>
-      </view>
-      <view>潮牌棉质男装定制</view>
-      <view>
-        <view>
-          <image src="/static/icon/定制未选中@2x.png"></image>
-        </view>
-        <view>2020/09/01</view>
+        <view>{{item.updateTime}}</view>
       </view>
     </view>
   </view>

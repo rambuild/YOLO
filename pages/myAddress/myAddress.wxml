@@ -3,7 +3,7 @@
 		<view>我的地址</view>
 		<view bindtap="addressGo" data-action="add">添加地址</view>
 	</view>
-	<radio-group bindchange="radioChange">
+	<radio-group bindchange="radioChange" hidden="{{userAddress.length==0}}">
 		<view class="box" wx:for="{{userAddress}}" wx:key="index">
 			<view class="address">
 				<view class="addressIcon">
@@ -33,7 +33,6 @@
 				<view class="sc" data-id="{{userAddress[index]}}" bindtap="remove">删除</view>
 			</view>
 		</view>
-	</radio-group>
-
+	</radio-group>	  
 </view>
 

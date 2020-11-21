@@ -142,3 +142,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 	margin-right: 44rpx;
 	font-size: 24rpx;
 }
+.noAddr{
+	text-align: center;
+	padding: 40rpx 0;
+}

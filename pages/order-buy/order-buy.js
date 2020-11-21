@@ -5,6 +5,7 @@ Page({
 		orderList: [],
 		userDefaultAddr: {},
 		totalPrice: 0,
+		addrFlag:true
 	},
 	onLoad(options) {
 		let orderList = JSON.parse(decodeURIComponent(options.orderList))
@@ -37,8 +38,11 @@ Page({
 					userDefaultAddr = i
 				}
 			})
+			let addrFlag = true
+			Object.keys(userDefaultAddr).length == 0 ? addrFlag = false : addrFlag = true
 			this.setData({
-				userDefaultAddr
+				userDefaultAddr,
+				addrFlag
 			})
 		})
 	},
@@ -104,6 +108,12 @@ Page({
 				} else if (res.cancel) {
 				}
 			}
+		})
+	},
+	// 没有地址的情况下去添加地址
+	toAddAddr(){
+		wx.navigateTo({
+			url:"/pages/address/address"
 		})
 	},
 	selAddr() {

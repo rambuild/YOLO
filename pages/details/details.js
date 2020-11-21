@@ -13,7 +13,7 @@ Page({
 		selTapFour: null,
 		goodsComment: [],
 		goodsId: null,
-		userId:null,
+		userId: null,
 	},
 	onLoad(options) {
 		let userId = wx.getStorageSync('user').id
@@ -88,7 +88,7 @@ Page({
 							color,
 							category,
 							model,
-							userId:this.data.userId,
+							userId: this.data.userId,
 							goodsId: this.data.proInf.id,
 							goodsName: this.data.proInf.goodsName,
 							price: this.data.proInf.price
@@ -136,10 +136,16 @@ Page({
 			let size = this.data.proSku[this.data.selTapOne].goodsSkuList[this.data.selTapTwo].goodsSkuList[
 				this.data.selTapThree
 			].sizeList[this.data.selTapFour]
+			let proInfo = this.data.proInf
+			let color = this.data.proSku[this.data.selTapOne].skuName
+			let category = this.data.proSku[this.data.selTapOne].goodsSkuList[this.data.selTapTwo].skuName
+			let model = this.data.proSku[this.data.selTapOne].goodsSkuList[this.data.selTapTwo].goodsSkuList[
+				this.data.selTapThree
+			].skuName
+			let goodsDetails = { color, category, model }
 			wx.navigateTo({
-				url: `../clothes/clothes?imgs=${encodeURIComponent(JSON.stringify(imgs))}&size=${size}&goodsId=${
-					this.data.goodsId
-				}`
+				url: `../clothes/clothes?imgs=${encodeURIComponent(JSON.stringify(imgs))}&size=${size}&goodsId=${this.data.goodsId
+					}&proInfo=${encodeURIComponent(JSON.stringify(proInfo))}&goodsDetails=${encodeURIComponent(JSON.stringify(goodsDetails))}`
 			})
 		} else {
 			wx.showToast({
@@ -200,6 +206,7 @@ Page({
 	getGoodsSku(id) {
 		wx.http({
 			url: "getGoodsSku",
+			loading: true,
 			data: {
 				goodsId: id
 			}
@@ -219,13 +226,13 @@ Page({
 			let goodsComment = res.data
 			goodsComment.forEach(i => {
 				i.score1 = parseInt(i.score1)
-                i.phone = i.phone.slice(0, 3) + "*****" + i.phone.slice(8)
-                // i.phone = i.phone.slice(0,3).padEnd(11,"*")
+				i.phone = i.phone.slice(0, 3) + "*****" + i.phone.slice(8)
+				// i.phone = i.phone.slice(0,3).padEnd(11,"*")
 			})
 			this.setData({
 				goodsComment: res.data
 			})
 		})
 	},
-	onShareAppMessage: function () {}
+	onShareAppMessage: function () { }
 })

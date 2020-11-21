@@ -114,3 +114,10 @@ page{
     height: 46rpx;
     margin-right: 22rpx;
 }
+.noAddr{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12rpx;
+    padding: 40rpx 0;
+    text-align: center;
+}

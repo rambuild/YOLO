@@ -1,7 +1,7 @@
 <!--pages/redpacket/redpacket.wxml-->
 <view>
   <view class="titleone">我的优惠券</view>
-  <view class="redone redone1">
+  <!-- <view class="redone redone1">
     <view class="hot">优惠卷</view>
     <view class="money">
       <view class="money_number"><text class="money_number_1">￥</text><text class="money_number_2">15</text></view>
@@ -16,5 +16,5 @@
       <view class="money_rule"><view class="money_rule_one"> 满69元可使用</view><view class="money_rule_tow">距离到期还剩{{time2}}小时</view></view>
       <view class="money_user">使用</view>
     </view> 
-  </view>
+  </view> -->
 </view>
