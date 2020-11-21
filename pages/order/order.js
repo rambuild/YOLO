@@ -325,7 +325,6 @@ Page({
 			}
 		}).then(res => {
 			if (res.code == 200) {
-				this.getOrders()
 				wx.showToast({
 					title: "提醒发货成功"
 				})
