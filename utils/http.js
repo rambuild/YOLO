@@ -4,11 +4,12 @@
 // const imgHost = "'http://106.13.45.179:8080/yolo/image/"
 
 //内网穿透url
-const hostUrl = 'http://liaoxian.natapp1.cc/yolo/wx/'
-const imgHost = "http://liaoxian.natapp1.cc/yolo/image/"
+// const hostUrl = 'http://liaoxian.natapp1.cc/yolo/wx/'
+// const imgHost = "http://liaoxian.natapp1.cc/yolo/image/"
 
-// const hostUrl = "http://192.168.8.133:8080/yolo/wx/"
-// const imgHost = 'http://192.168.8.133:8080/yolo/image/'
+// 线上
+const hostUrl = "https://yolo.quwei360.com.cn/yolo/wx/"
+const imgHost = 'https://yolo.quwei360.com.cn/yolo/image/'
 
 
 function request(params) {

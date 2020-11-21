@@ -1,24 +1,28 @@
-
+// 自定义计算方法，处理JS计算小数的精度问题
+import calc from "../../utils/calc"
+import { imgHost } from "../../utils/http"
 Page({
 	data: {
 		user: {},
 		orderList: [],
 		userDefaultAddr: {},
 		totalPrice: 0,
-		addrFlag:true
+		addrFlag:true,
+		imgHost:null
 	},
 	onLoad(options) {
 		let orderList = JSON.parse(decodeURIComponent(options.orderList))
 		// 计算总价
 		let totalPrice = 0
 		orderList.forEach(i => {
-			totalPrice += parseFloat(i.price) * parseFloat(i.num)
+			totalPrice = calc.add(totalPrice, calc.mul(i.price, i.num))
 		})
 		let user = wx.getStorageSync("user")
 		this.setData({
 			user,
 			orderList,
-			totalPrice
+			totalPrice,
+			imgHost
 		})
 	},
 	onShow() {

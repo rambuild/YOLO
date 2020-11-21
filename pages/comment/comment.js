@@ -1,34 +1,34 @@
 // pages/comment/comment.js
+import { imgHost } from "../../utils/http"
 Page({
-
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
 		user: {},
-		commentsList: []
+		commentsList: [],
+		imgHost: null
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad(options) {
-		let user = wx.getStorageSync('user')
+		let user = wx.getStorageSync("user")
 		this.setData({
-			user
+			user,
+			imgHost
 		})
 		this.getEvaluation()
 	},
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow() {
-
-	},
+	onShow() {},
 	getEvaluation() {
 		wx.http({
 			url: "getMyEvaluation",
-			loading:true,
+			loading: true,
 			data: {
 				userId: this.data.user.id
 			}
@@ -39,9 +39,9 @@ Page({
 				})
 			} else {
 				wx.showToast({
-					title: '请求失败',
+					title: "请求失败",
 					icon: "none"
-				});
+				})
 			}
 		})
 	}

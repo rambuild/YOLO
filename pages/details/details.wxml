@@ -1,6 +1,6 @@
 <view class="details">
 	<view class="banner">
-		<image src="{{proInf.img}}" mode='aspectFit' />
+		<image src="{{imgHost+proInf.img}}" mode='aspectFit' />
 		<view class="title">
 			<view class="title-name">
 				<view>{{proInf.goodsName}}</view>
@@ -120,6 +120,8 @@
 		<image src="/static/icon/cart.png" bindtap='toOrder' />
 		<view bind:tap='navClothes'>立即定制</view>
 	</view>
+
+	
 	<!-- 定制完后弹窗 -->
 	<view
 	 class="poupe"

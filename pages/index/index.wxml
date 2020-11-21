@@ -5,7 +5,7 @@
 			<swiper-item wx:for='{{banner.bannerImg}}' wx:key='index'>
 				<image
 				 class="imgbg"
-				 src="{{item}}"
+				 src="{{imgHost+item}}"
 				 mode="aspectFit|aspectFill|widthFix"
 				 lazy-load="false"
 				/>
@@ -42,7 +42,7 @@
 	<view class="product">
 		<custom-goods
 		 name='{{item.goodsName}}'
-		 imgsrc='{{item.img}}'
+		 imgsrc='{{imgHost+item.img}}'
 		 imgStyle='width:326rpx;height:284rpx;'
 		 titleStyle='width:326rpx;'
 		 wx:for='{{indexList}}'

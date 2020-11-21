@@ -81,7 +81,7 @@ Page({
                     phone,
                     nick: name,
                     userId: this.data.userId,
-                    type: this.data.type,
+                    type: 1,
                     addrMain,
                     addrDetail
                 },
@@ -107,7 +107,7 @@ Page({
                     phone,
                     nick: name,
                     userId: this.data.userId,
-                    type: this.data.type,
+                    type: this.data.options.type,
                     id: this.data.options.id,
                     addrMain,
                     addrDetail

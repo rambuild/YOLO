@@ -1,4 +1,5 @@
 // pages/order/order.js
+import { imgHost } from "../../utils/http"
 Page({
 	/**
 	 * 页面的初始数据
@@ -15,7 +16,8 @@ Page({
 		toBeEvaluatedList: [], // 待评价
 		refunding: [], // 退款中4
 		toBePaidListCheckAll: false, // 判断待付款区是否全选
-		totalPrice: 0
+		totalPrice: 0,
+		imgHost:null
 	},
 
 	/**
@@ -30,7 +32,8 @@ Page({
 		let openId = wx.getStorageSync("user").openId
 		this.setData({
 			userId,
-			openId
+			openId,
+			imgHost
 		})
 	},
 	onShow() {
@@ -80,13 +83,7 @@ Page({
 						})
 					}
 				})
-				// 数组倒置，使最新的订单前置
-				allOrders = allOrders.reverse()
-				toBePaidList = toBePaidList.reverse()
-				toBeDeliveredList = toBeDeliveredList.reverse()
-				toBeReceivedList = toBeReceivedList.reverse()
-				evaluateList = evaluateList.reverse()
-				refunding = refunding.reverse()
+
 				this.setData({
 					allOrders,
 					toBePaidList,
@@ -226,8 +223,8 @@ Page({
 					})
 				}
 			},
-			fail: () => { },
-			complete: () => { }
+			fail: () => {},
+			complete: () => {}
 		})
 	},
 	// 付款
@@ -284,10 +281,10 @@ Page({
 					}
 				}
 			})
-		} else if (item.status == 6) { // 状态6为待评价订单
-			console.log('评价')
+		} else if (item.status == 6) {
+			// 状态6为待评价订单
+			console.log("评价")
 		}
-
 	},
 	// 申请退款
 	applyForRefund(e) {
@@ -321,21 +318,21 @@ Page({
 		let { item } = e.currentTarget.dataset
 		wx.http({
 			url: "updateOrder",
-			loading:true,
+			loading: true,
 			data: {
 				status: item.status,
 				id: item.id
 			}
 		}).then(res => {
-			if(res.code == 200){
+			if (res.code == 200) {
 				this.getOrders()
 				wx.showToast({
-					title:"提醒发货成功"
+					title: "提醒发货成功"
 				})
-			}else{
+			} else {
 				wx.showToast({
-					title:res.msg,
-					icon:"none"
+					title: res.msg,
+					icon: "none"
 				})
 			}
 		})

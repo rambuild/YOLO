@@ -1,4 +1,5 @@
 // pages/goodsEvaluate/goodsEvaluate.js
+import { imgHost } from "../../utils/http"
 Page({
 	/**
 	 * 页面的初始数据
@@ -9,7 +10,8 @@ Page({
 		score3: null,
 		score4: null,
 		evaluation: "",
-		evaluateItem: {}
+		evaluateItem: {},
+		imgHost:null
 	},
 
 	/**
@@ -18,7 +20,8 @@ Page({
 	onLoad(options) {
 		let item = JSON.parse(decodeURIComponent(options.item))
 		this.setData({
-			evaluateItem: item
+			evaluateItem: item,
+			imgHost
 		})
 	},
 	/**

@@ -1,4 +1,5 @@
 // pages/details/details.js
+import { imgHost } from "../../utils/http"
 Page({
 	data: {
 		tab: 1,
@@ -14,11 +15,13 @@ Page({
 		goodsComment: [],
 		goodsId: null,
 		userId: null,
+		imgHost:null
 	},
 	onLoad(options) {
 		let userId = wx.getStorageSync('user').id
 		this.setData({
-			userId
+			userId,
+			imgHost
 		})
 		this.data.goodsId = options.id
 		// 获取商品信息

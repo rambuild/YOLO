@@ -5,7 +5,7 @@
 	<view class="commentsListBox">
 		<view class="item" wx:for="{{commentsList}}">
 			<view class="imgBox">
-				<image src="{{item.img1}}" mode="aspectFit|aspectFill|widthFix" />
+				<image src="{{imgHost+item.img1}}" mode="aspectFit|aspectFill|widthFix" />
 			</view>
 			<view class="goodsInfo">
 				<view class="goodsTop">

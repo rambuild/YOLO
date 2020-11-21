@@ -12,7 +12,7 @@ var twoPoint = {
 	x2: 0,
 	y2: 0
 }
-import { hostUrl, imgHost } from '../../utils/http'
+import { hostUrl, imgHost } from "../../utils/http"
 Page({
 	data: {
 		center: "center",
@@ -68,19 +68,27 @@ Page({
 		endImg: null,
 		imageDirection: "front",
 		timeLine: -1,
-		userId: null
+		userId: null,
+		imgHost: null
 	},
 	onLoad(options) {
 		let imgs = JSON.parse(decodeURIComponent(options.imgs))
 		let proInfo = JSON.parse(decodeURIComponent(options.proInfo))
 		let goodsDetails = JSON.parse(decodeURIComponent(options.goodsDetails))
-		let obj = Object.assign({ imgs }, { size: options.size }, { goodsId: options.goodsId }, { proInfo }, { goodsDetails })
+		let obj = Object.assign(
+			{ imgs },
+			{ size: options.size },
+			{ goodsId: options.goodsId },
+			{ proInfo },
+			{ goodsDetails }
+		)
 		// 用户ID
-		let userId = wx.getStorageSync('user').id
+		let userId = wx.getStorageSync("user").id
 		this.setData({
 			fetchOptions: obj,
-			image_src: obj.imgs.img1,
-			userId
+			image_src: imgHost + obj.imgs.img1,
+			userId,
+			imgHost
 		})
 	},
 	handleimage_box_show() {
@@ -283,14 +291,14 @@ Page({
 	handel_image_negative() {
 		this.setData({
 			imageDirection: "end",
-			image_src: this.data.fetchOptions.imgs.img2 || "",
+			image_src: imgHost + this.data.fetchOptions.imgs.img2
 		})
 	},
 	// 正面
 	handel_image_positive() {
 		this.setData({
 			imageDirection: "front",
-			image_src: this.data.fetchOptions.imgs.img1 || "",
+			image_src: imgHost + this.data.fetchOptions.imgs.img1
 		})
 	},
 	// 模板的逻辑
@@ -503,38 +511,54 @@ Page({
 		setTimeout(() => {
 			// 先上传图片获取path
 			// 上传图片1
-			this.uploadImg(this.data.frontImg)
-				.then(res1 => {
-					// 上传图片2
-					this.uploadImg(this.data.endImg)
-						.then(res2 => {
-							wx.http({
-								url: 'insertProduction',
-								data: {
-									userId: this.data.userId,
-									goodsId: id,
-									goodsName,
-									price,
-									color,
-									category,
-									model,
-									img1: res1,
-									img2: res2,
-								}
-							}).then(res => {
-								wx.hideLoading()
-								if (res.code = 200) {
-									wx.showToast({
-										title: '上传成功'
-									})
-								}
-								console.log(res)
-							}).catch(res => {
-								wx.hideLoading()
+			this.uploadImg(this.data.frontImg).then(res1 => {
+				// 上传图片2
+				this.uploadImg(this.data.endImg).then(res2 => {
+					// 更新到我的作品
+					wx.http({
+						url: "insertProduction",
+						data: {
+							userId: this.data.userId,
+							goodsId: id,
+							goodsName,
+							price,
+							color,
+							category,
+							model,
+							img1: res1,
+							img2: res2
+						}
+					})
+					// 添加到购物车
+					wx.http({
+						url: "insertShoppingList",
+						data: {
+							img1: res1,
+							img2: res2,
+							size: this.data.fetchOptions.size,
+							color,
+							category,
+							model,
+							userId: this.data.userId,
+							goodsId: id,
+							goodsName,
+							price
+						}
+					}).then(res => {
+						if (res.code == 200) {
+							wx.showToast({
+								title: "定制完成"
 							})
-						})
+							setTimeout(() => {
+								wx.switchTab({
+									url: "/pages/car/car"
+								})
+							}, 1500)
+						}
+					})
+					wx.hideLoading()
 				})
-
+			})
 
 			// })
 		}, 1500)
@@ -545,7 +569,7 @@ Page({
 			wx.uploadFile({
 				url: `${hostUrl}wxUploadImg`,
 				filePath,
-				name: 'file',
+				name: "file",
 				formData: null,
 				success: res => {
 					if (res.errMsg == "uploadFile:ok") {
@@ -562,7 +586,7 @@ Page({
 	},
 	// 画图
 	drawCanvas(imageDirection) {
-		// 创建画布对象		
+		// 创建画布对象
 		// wx.showLoading()
 		const ctx = wx.createCanvasContext("myCanvas", this)
 		// 获取图片信息，要按照原图来绘制，否则图片会变形
@@ -591,11 +615,17 @@ Page({
 						console.log("curHeight", curHeight)
 						let rotateDeg = this.data.img_origin
 						console.log("rotateDeg", rotateDeg)
-						console.log('drag_box_image_left', drag_box_image_left / activesize)
-						console.log('drag_box_image_top', drag_box_image_top / activesize)
+						console.log("drag_box_image_left", drag_box_image_left / activesize)
+						console.log("drag_box_image_top", drag_box_image_top / activesize)
 						// ctx.translate(curWidth/2, curHeight/2)
 						// ctx.rotate(rotateDeg)
-						ctx.drawImage(res.path, 100 + drag_box_image_left / activesize, 100 + drag_box_image_top / activesize, curWidth, curHeight)
+						ctx.drawImage(
+							res.path,
+							100 + drag_box_image_left / activesize,
+							100 + drag_box_image_top / activesize,
+							curWidth,
+							curHeight
+						)
 						ctx.draw()
 					}
 				})
@@ -608,11 +638,11 @@ Page({
 								console.log("合成图片成功！", res)
 								let tempFilePath = res.tempFilePath
 								// 判断图片的方向
-								if (imageDirection == 'front') {
+								if (imageDirection == "front") {
 									this.setData({
 										frontImg: tempFilePath
 									})
-								} else if (imageDirection == 'end') {
+								} else if (imageDirection == "end") {
 									this.setData({
 										endImg: tempFilePath
 									})

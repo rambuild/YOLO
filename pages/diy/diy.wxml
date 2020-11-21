@@ -66,7 +66,7 @@
 					>
 						<custom-goods
 						 name='{{item.goodsName}}'
-						 imgsrc='{{item.img}}'
+						 imgsrc='{{imgHost+item.img}}'
 						 imgStyle='width:246rpx;height:212rpx;'
 						 titleStyle='width:246rpx;'
 						>

@@ -9,12 +9,10 @@
             <view class="address-text">地址：{{userDefaultAddr.address}}</view>
         </view>
     </view>
-    <view class="noAddr" bindtap='toAddAddr' hidden="{{addrFlag}}">
-        还没有地址，去添加一个
-    </view>      
+    <view class="noAddr" bindtap='toAddAddr' hidden="{{addrFlag}}">还没有地址，去添加一个</view>
     <view class="orderinf">
         <view class="product-inf order-bm" wx:for="{{orderList}}" wx:key="id">
-            <image class="" src="{{item.img1}}"></image>
+            <image class="" src="{{imgHost+item.img1}}"></image>
             <view>
                 <view class="text-font-size product-title">
                     <text class="w70">{{item.goodsName}}</text>
