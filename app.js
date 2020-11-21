@@ -19,6 +19,7 @@ App({
         // wx.showLoading({mask: true});
         wx.login({
             success: (res) => {
+                console.log('login',res)
                 let proLogin = this.login(res.code)
                 let userInfo = this.getUserInfo()
                 Promise.all([proLogin, userInfo]).then((res) => {

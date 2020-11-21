@@ -182,7 +182,7 @@ page {
   display: block;
   height: 40rpx;
   width: 40rpx;
-  margin:29rpx 37.5rpx;
+  padding:29rpx 37.5rpx;
 }
 
 .gobuy > view {
