@@ -1,7 +1,7 @@
 const http = require("./utils/http")
 wx.http = http.request
 App({
-    onLaunch: function () {
+    onLaunch(options) {
         // 播放音乐
         // const innerAudioContext = wx.createInnerAudioContext() //新建一个createInnerAudioContext();
         // innerAudioContext.autoplay = true //音频自动播放设置
@@ -14,13 +14,18 @@ App({
         //     console.log(res) //错误信息
         //     // console.log(res.errCode) //错误码
         // })
-        
+
         // 登录
         // wx.showLoading({mask: true});
+        let parentId = 0
+        let userId = options.query.userId
+        if (userId) {
+            parentId = userId
+        }
         wx.login({
             success: (res) => {
-                console.log('login',res)
-                let proLogin = this.login(res.code)
+                console.log('login', res)
+                let proLogin = this.login(res.code, parentId)
                 let userInfo = this.getUserInfo()
                 Promise.all([proLogin, userInfo]).then((res) => {
                     let [{ data: user }, info] = res
@@ -40,7 +45,7 @@ App({
                         })
                     }
                     this.globalData.user = user
-                    wx.setStorageSync('user',user)
+                    wx.setStorageSync('user', user)
                     if (this.callback) {
                         this.callback(user)
                     }
@@ -50,7 +55,7 @@ App({
         })
     },
     // 获取用户信息
-    login(code) {
+    login(code, parentId) {
         return wx
             .http({
                 url: "getOpenid",
@@ -63,6 +68,7 @@ App({
                     url: "getUser",
                     data: {
                         openId: res.data.openid,
+                        parentId
                     },
                 })
             })

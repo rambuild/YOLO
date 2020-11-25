@@ -33,7 +33,7 @@
 			</view>
 		</view>
 		<block wx:if="{{index==1}}">
-			<view class="pushlist" wx:for="{{tcDetails}}">
+			<view class="pushlist" wx:for="{{tcDetails}}" wx:key="id">
 				<view class="pushlist_one">
 					<view>提成明细</view>
 					<view>{{item.updateTime}}</view>
@@ -42,7 +42,7 @@
 			</view>
 		</block>
 		<block wx:if="{{index==2}}">
-			<view class="getlist {{item.status==1?'color':''}}" wx:for="{{txDetails}}">
+			<view class="getlist {{item.status==1?'color':''}}" wx:for="{{txDetails}}" wx:key="id">
 				<view class="getlist_one">
 					<view>提现</view>
 					<view>{{item.updateTime}}</view>
