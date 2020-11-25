@@ -9,7 +9,7 @@
       <view>{{item.goodsName}}</view>
       <view>
         <view>
-          <image src="/static/icon/定制未选中@2x.png"></image>
+          <image src="/static/icon/cusNotSelected.png"></image>
         </view>
         <view>{{item.updateTime}}</view>
       </view>

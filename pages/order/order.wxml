@@ -65,7 +65,7 @@
 																				<!-- 选择功能
 																							<view class="top-tick">
 																									<view bindtap='selectItem' data-index="{{index1}}">
-																											<image src="{{item1.selected==0?'../../static/icon/未选中.png':'../../static/icon/选中.png'}}"></image>
+																											<image src="{{item1.selected==0?'../../static/icon/notSelected.png':'../../static/icon/selected.png'}}"></image>
 																									</view>
 																							</view> -->
 																				<view class="top-img">
@@ -102,7 +102,7 @@
 														<!-- <view class="bottem">
 																	<view class="total">
 																			<view bindtap='selectAll'>
-																					<image src="{{toBePaidListCheckAll?'../../static/icon/选中.png':'../../static/icon/未选中.png'}}"></image>
+																					<image src="{{toBePaidListCheckAll?'../../static/icon/selected.png':'../../static/icon/notSelected.png'}}"></image>
 																			</view>
 																			<view>合计：￥{{totalPrice}}</view>
 																	</view>

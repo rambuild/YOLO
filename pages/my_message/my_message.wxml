@@ -13,12 +13,12 @@
 			 bindtap="logistics"
 			>
 				<view>
-					<image src="/static/icon/物流.png" />
+					<image src="/static/icon/logistics.png" />
 					<text>交易物流</text>
 				</view>
 			</view>
 			<!-- <view class="icon" data-show="2" bindtap="logistics">
-        <image src="/static/icon/消息.png" /><text>评论回复</text>
+        <image src="/static/icon/message.png" /><text>评论回复</text>
       </view> -->
 		</view>
 		<!-- <view wx:if="{{active==1}}" class="active l"></view>
@@ -44,22 +44,5 @@
 			</view>
 		</view>
 	</view>
-	<!-- <view wx:if="{{active==2}}" class="content">
-    <view class="list">
-      <view class="list_image"><image src="/static/images/aaa.jpg"></image></view>
-      <view class="list_message"><view>Tomato</view><view>你这件衣服设计的真漂亮</view></view>
-      <view class="list_time">09:16</view>
-    </view>
-    <view class="list">
-      <view class="list_image"><image src="/static/images/aaa.jpg"></image></view>
-      <view class="list_message"><view>Tomato</view><view>你这件衣服设计的真漂亮</view></view>
-      <view class="list_time">09:16</view>
-    </view>
-    <view class="list">
-      <view class="list_image"><image src="/static/images/aaa.jpg"></image></view>
-      <view class="list_message"><view>Tomato</view><view>你这件衣服设计的真漂亮</view></view>
-      <view class="list_time">09:16</view>
-    </view>
-  </view> -->
 </view>
 

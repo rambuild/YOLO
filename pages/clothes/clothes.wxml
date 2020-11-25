@@ -16,19 +16,19 @@
 						<view bindtap="handlefontshow" bindtouchstart="text_box_touchstart" catchtouchmove="text_box_touchmove" hidden="{{!font_box_show}}" style="top:{{font_box_top}}px; left:{{font_box_left}}px;  transform:scale({{textSize}},{{textSize}});  " class="font_box {{font_btn_show?'border1':''}}">
 								<!-- 文本框退出按钮 -->
 								<view class="font_btn font_btn1" bindtap="handleTextClear" wx:if="{{font_btn_show}}">
-										<image src="/static/icon/退出.png" />
+										<image src="/static/icon/quit.png" />
 								</view>
 								<!-- 文本框旋转按钮 -->
 								<view class="font_btn font_btn2" catchtouchstart="text_touchoriginstart" catchtouchmove="text_touchorigin" wx:if="{{font_btn_show}}">
-										<image src="/static/icon/旋转.png" />
+										<image src="/static/icon/rotate.png" />
 								</view>
 								<!-- 文本框镜像按钮 -->
 								<view class="font_btn font_btn3" bindtap="handleTextFace" wx:if="{{font_btn_show}}">
-										<image src="/static/icon/镜像.png" />
+										<image src="/static/icon/mirror.png" />
 								</view>
 								<!-- 文本框缩放按钮 -->
 								<view class="font_btn font_btn4" catchtouchstart="handleTextSize1" catchtouchmove="handleTextSize2" wx:if="{{font_btn_show}}">
-										<image src="/static/icon/缩放.png" />
+										<image src="/static/icon/scale.png" />
 								</view>
 								<!-- 渲染文本框的盒子 -->
 								<view wx:if="{{font_view_show}}" class="font_text" style=" color:{{rgb}}; text-align:{{text_align}}; vertical-align:{{vertical_align}}; font-size:{{font_size}}rpx;  transform:rotate({{font_text_origin}}deg) rotateY({{font_text_originY}}deg)">
@@ -39,19 +39,19 @@
 						</view>
 						<!-- 删除按钮 -->
 						<view class="delBtn drag_btn" bindtap="handleClose" wx:if="{{image_box_show}}">
-								<image src="/static/icon/退出.png" />
+								<image src="/static/icon/quit.png" />
 						</view>
 						<!-- 旋转按钮 -->
 						<view class="rotateBtn drag_btn" catchtouchstart="img_touchoriginstart" catchtouchmove="img_touchorigin" wx:if="{{image_box_show}}">
-								<image src="/static/icon/旋转.png" />
+								<image src="/static/icon/rotate.png" />
 						</view>
 						<!-- 镜像按钮 -->
 						<view class="mirrorBtn drag_btn" bindtap="image_mirror" wx:if="{{image_box_show}}">
-								<image src="/static/icon/镜像.png" />
+								<image src="/static/icon/mirror.png" />
 						</view>
 						<!-- 缩放按钮 -->
 						<view class="scaleBtn drag_btn" catchtouchstart="img_touchSizeUpStart" catchtouchmove="img_touchSizeDownmove" wx:if="{{image_box_show}}">
-								<image src="/static/icon/缩放.png" />
+								<image src="/static/icon/scale.png" />
 						</view>
 				</view>
 		</view>

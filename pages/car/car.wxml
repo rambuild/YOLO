@@ -7,7 +7,7 @@
 				<view class="main">
 						<view class="tick">
 								<view data-tickIndex="{{index}}" bindtap="selected">
-										<image src="{{item.selected?'../../static/icon/选中.png':'../../static/icon/未选中.png'}}" />
+										<image src="{{item.selected?'../../static/icon/selected.png':'../../static/icon/notSelected.png'}}" />
 								</view>
 						</view>
 						<view class="img">
@@ -35,7 +35,7 @@
 		<view class="bottem">
 				<view class="total">
 						<view bindtap="checkAll">
-								<image src="{{chooseAll?'../../static/icon/选中.png':'../../static/icon/未选中.png'}}" />
+								<image src="{{chooseAll?'../../static/icon/selected.png':'../../static/icon/notSelected.png'}}" />
 						</view>
 						<view>合计：￥{{total}}</view>
 				</view>

@@ -122,7 +122,6 @@ Page({
     },
     // 删除地址信息
     remove(option) {
-        console.log(option)
         wx.showModal({
             title: "提示",
             content: "确定删除此地址？",
@@ -136,14 +135,12 @@ Page({
                             userId: option.target.dataset.id.userId,
                         },
                     }).then((res) => {
-                        console.log(res)
                         wx.http({
                             url: "getAddress",
                             data: {
                                 userId: this.data.userId,
                             },
                         }).then((res) => {
-                            console.log(res)
                             this.setData({
                                 userAddress: res.data,
                             })

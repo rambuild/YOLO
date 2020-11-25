@@ -49,6 +49,7 @@
   "isGameTourist": false,
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
+  "appid": "wxeb26da9f66b457cc",
   "condition": {
     "plugin": {
       "list": []

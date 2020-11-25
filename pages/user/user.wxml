@@ -16,32 +16,32 @@
 						<view bindtap="orderGo">查看全部</view>
 				</view>
 				<view class="name">
-						{{user.wxNick?user.wxNick :'点击授权'}}
-						<button open-type="getUserInfo" class='getUserInfo' bindgetuserinfo="getUserInfo" wx:if='{{!user.wxNick}}' />
+						<text>{{user.wxNick?user.wxNick :'点击授权'}}</text>
+						<button open-type="getUserInfo" class='getUserInfo' bindgetuserinfo="getUserInfo" wx:if='{{!user.wxNick}}'></button>
 				</view>
 				<view class="line" />
 				<view class="process">
 						<view class="item" data-mark="1" bindtap="orderGo">
 								<view>
-										<image src="../../static/icon/待付款.png" />
+										<image src="../../static/icon/tobePaid.png" />
 								</view>
 								<view>待付款</view>
 						</view>
 						<view class="item" data-mark="2" bindtap="orderGo">
 								<view>
-										<image src="../../static/icon/待发货.png" />
+										<image src="../../static/icon/toBeDelivered.png" />
 								</view>
 								<view>待发货</view>
 						</view>
 						<view class="item" data-mark="3" bindtap="orderGo">
 								<view>
-										<image src="../../static/icon/待收货.png" />
+										<image src="../../static/icon/toBeReceived.png" />
 								</view>
 								<view>待收货</view>
 						</view>
 						<view class="item" data-mark="4" bindtap="orderGo">
 								<view>
-										<image src="../../static/icon/待评论.png" />
+										<image src="../../static/icon/toBeComment.png" />
 								</view>
 								<view>待评价</view>
 						</view>
@@ -55,7 +55,7 @@
 				<view class="process" style="margin-top:62rpx">
 						<view class="item" bindtap="goToRedPacket">
 								<view>
-										<image src="../../static/icon/优惠券.png" />
+										<image src="../../static/icon/coupon.png" />
 								</view>
 								<view>优惠卷</view>
 						</view>
@@ -67,13 +67,13 @@
 						</view>
 						<view class="item" bindtap="invitationGO">
 								<view>
-										<image src="../../static/icon/邀请有礼.png" />
+										<image src="../../static/icon/inviteGift.png" />
 								</view>
 								<view>邀请有礼</view>
 						</view>
 						<view class="item" bindtap="myMessageGo">
 								<view>
-										<image src="../../static/icon/我的消息.png" />
+										<image src="../../static/icon/myMessage.png" />
 								</view>
 								<view>我的信息</view>
 						</view>
@@ -81,13 +81,13 @@
 				<view class="process" style="margin-top:62rpx">
 						<view class="item" bindtap="myPhotoGo">
 								<view>
-										<image src="../../static/icon/我的作品.png" />
+										<image src="../../static/icon/myProduct.png" />
 								</view>
 								<view>我的作品</view>
 						</view>
 						<view class="item" bindtap="commentGo">
 								<view>
-										<image src="../../static/icon/我的评论.png" />
+										<image src="../../static/icon/myEvaluate.png" />
 								</view>
 								<view>我的评价</view>
 						</view>
@@ -103,7 +103,7 @@
 						</view>
 						<view class="item" bindtap="helpGo">
 								<view>
-										<image src="../../static/icon/帮助.png" />
+										<image src="../../static/icon/help.png" />
 								</view>
 								<view>帮助</view>
 						</view>

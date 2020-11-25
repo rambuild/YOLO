@@ -44,6 +44,9 @@ Page({
 			userId
 		})
 	},
+	onShow() {
+		this.getUserAddress()
+	},
 	getUserAddress() {
 		wx.http({
 			url: "getAddress",
@@ -66,7 +69,6 @@ Page({
 	// 保存按钮
 	formSubmit(e) {
 		let { phone, name, address, picker } = e.detail.value
-		console.log(e)
 		let fullAddress = ""
 		for (let i = 0; i < picker.length; i++) {
 			fullAddress += picker[i]
@@ -74,7 +76,6 @@ Page({
 		let addrMain = picker
 		let addrDetail = address
 		fullAddress += address
-		console.log(name)
 		if (!/^1[0-9]{10}$/.test(phone)) {
 			wx.showToast({
 				title: "手机号码格式错误",
@@ -82,15 +83,16 @@ Page({
 			})
 			return
 		}
-		if (name == "" || address == "" || picker.length == 0) {
+		if (name.trim() == "" || address.trim() == "" || picker.length == 0) {
 			wx.showToast({
 				title: "请完善你的收货信息",
 				icon: "none"
 			})
 			return
-        }
-        // 如果用户没有地址则设置成默认地址
+		}
+		// 如果用户没有地址则设置成默认地址
 		let type = this.data.userAddress.length == 0 ? 2 : 1
+
 		if (this.data.action == "add") {
 			// 添加地址
 			wx.http({
@@ -99,11 +101,11 @@ Page({
 				data: {
 					address: fullAddress,
 					phone,
-					nick: name,
+					nick: name.trim(),
 					userId: this.data.userId,
 					type,
 					addrMain,
-					addrDetail
+					addrDetail:addrDetail.trim()
 				}
 			}).then(res => {
 				if (res.code == 200) {

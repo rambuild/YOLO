@@ -61,7 +61,7 @@
 .myGetOrder {
     width: 622rpx;
     height: 60rpx;
-    margin-top: 32rpx;
+    margin-top: 25rpx;
     display: flex;
     justify-content: space-between;
     font-size: 32rpx;
@@ -70,7 +70,9 @@
     overflow: hidden;
     position: relative;
     height: 54rpx;
+    right: 8rpx;
     font-size: 46rpx;
+    z-index: 1100;
 }
 .getUserInfo {
     position: absolute;
