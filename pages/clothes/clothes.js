@@ -1,5 +1,6 @@
 // pages/test/test.js
 var canOnePointMove = true
+const wxml2canvas = require('../../utils/wxml2canvas.js')
 // 移动图片的手指的坐标
 var onePoint = {
 	x1: 0,
@@ -657,5 +658,5 @@ Page({
 				}, 1500)
 			}
 		})
-	}
+	},
 })

@@ -1,5 +1,5 @@
 <!-- pages/test/test.wxml -->
-<view class="pages_box">
+<view class="pages_box"  id='wrapper'>
 		<!-- 外层包裹大盒子 -->
 		<view class="control">
 				<view class="image_face image_positive" bindtap="handel_image_positive">正</view>
@@ -56,7 +56,7 @@
 				</view>
 		</view>
 		<!-- canvas区域 -->
-		<canvas style="width:300px; height:300px;visibility:hidden;" canvas-id="myCanvas" />
+		<canvas style="width:400px; height:400px;" canvas-id="myCanvas" />
 		<!-- 下方导航栏模块 -->
 		<view class="bar_indexBox">
 				<!-- 传图 -->
